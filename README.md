@@ -5,7 +5,7 @@
 
 * Java 8
 * Maven 3.x (must be able to run `mvn` on the command line)
-* Node + NPM
+* Node + NPM ([nvm](https://github.com/creationix/nvm) preferred to manage node environments)
 
 ***To Run:***
 
