@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>MDHS</title>
+
+		<link rel="stylesheet" href="../public/app/css/styles.css" th:href="@{app/css/styles.css}" media="screen"/>
+
+	</head>
+	<body ng-app="mdhs">
+
+		<div class="ng-view"></div>
+
+		<!-- Third-party libraries -->
+		<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+
+		<!-- build:externalJs lib/lib-all.js -->
+		<script src='../public/bower_components/lodash/dist/lodash.js' th:src='@{bower_components/lodash/dist/lodash.js}' ></script>
+		<script src='../public/bower_components/jquery/dist/jquery.js' th:src='@{bower_components/jquery/dist/jquery.js}'></script>
+		<script src='../public/bower_components/angular/angular.js' th:src='@{bower_components/angular/angular.js}'></script>
+		<script src='../public/bower_components/angular-route/angular-route.js' th:src='@{bower_components/angular-route/angular-route.js}'></script>
+		<script src='../public/bower_components/bootstrap/dist/js/bootstrap.min.js' th:src='@{bower_components/bootstrap/dist/js/bootstrap.min.js}'></script>
+		<script src='../public/bower_components/angular-simple-logger/dist/angular-simple-logger.js' th:src='@{bower_components/angular-simple-logger/dist/angular-simple-logger.js}'></script>
+		<script src='../public/bower_components/angular-google-maps/dist/angular-google-maps.js' th:src='@{bower_components/angular-google-maps/dist/angular-google-maps.js}'></script>
+		<!-- endbuild -->
+
+		<!-- build:appJs app/app-all.js -->
+		<script src='../public/app/application.js' th:src='@{app/application.js}'></script>
+		<script src='../public/app/routes.js' th:src='@{app/routes.js}'></script>
+		<script src='../public/app/home/index.js' th:src='@{app/home/index.js}'></script>
+		<script src='../public/app/facilities/FacilityService.js' th:src='@{app/facilities/FacilityService.js}'></script>
+		<!-- endbuild -->
+	</body>
+</html>

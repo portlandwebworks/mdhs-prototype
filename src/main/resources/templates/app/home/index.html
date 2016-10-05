@@ -1,0 +1,12 @@
+<div class="page-home container">
+  <div class="site-banner"></div>
+  <section class="page-home__summary row">
+	  {{$ctrl.message}}
+	  <p ng-if="$ctrl.facilities">
+	  Found {{$ctrl.facilities.length}} facilities as a test.
+	  </p>
+	  <p ng-if="!$ctrl.facilities">
+		  Looking for test facilities.
+	  </p>
+  </section>
+</div>

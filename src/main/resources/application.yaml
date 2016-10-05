@@ -1,0 +1,13 @@
+
+spring:
+#    datasource:
+#        test-on-borrow: true
+#        validation-query: SELECT 1;
+#        url: "jdbc:hsqldb:mem:?shutdown=true"
+
+#    jpa:
+#        hibernate:
+#            ddl-auto: none
+    thymeleaf:
+        prefix: "classpath:/templates"
+        cache: false
