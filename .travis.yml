@@ -1,0 +1,16 @@
+language: java
+jdk:
+- oraclejdk8
+services:
+- docker
+cache:
+  directories:
+  - $HOME/.m2
+sudo: false
+install: true
+env:
+  global:
+  - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+before_script:
+- npm install -g bower
+script: mvn install
