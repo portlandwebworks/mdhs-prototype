@@ -11,7 +11,9 @@
 	</head>
 	<body ng-app="mdhs">
 
-		<div class="ng-view"></div>
+  <div class="site-header"></div>
+  <div class="ng-view"></div>
+  <div class="site-footer"></div>
 
 		<!-- Third-party libraries -->
 		<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
@@ -30,6 +32,8 @@
 		<script src='../public/app/application.js' th:src='@{app/application.js}'></script>
 		<script src='../public/app/routes.js' th:src='@{app/routes.js}'></script>
 		<script src='../public/app/pages/home/index.js' th:src='@{app/pages/home/index.js}'></script>
+		<script src='../public/app/directives/site-header.js' th:src='@{app/directives/site-header/index.js}'></script>
+		<script src='../public/app/directives/site-footer.js' th:src='@{app/directives/site-footer/index.js}'></script>
 		<script src='../public/app/services/FacilityService.js' th:src='@{app/services/FacilityService.js}'></script>
 		<!-- endbuild -->
 	</body>
