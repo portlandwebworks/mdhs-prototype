@@ -1,0 +1,32 @@
+.site-footer__container{
+  border-top: solid 15px $blue-1;
+  background-color: $gray-6;
+  color: $gray-2;
+  min-height: 200px;
+}
+
+.site-footer__media-image {
+  display: inline-block;
+  width: 40px;
+}
+
+.site-footer__link{
+  color: $gray-2;
+}
+
+.site-footer__logo {
+  margin-bottom: 20px;
+}
+
+.site-footer__phone {
+  font-size: 12px;
+}
+
+
+.site-footer__pww {
+  margin: 40px 0;
+
+  a {
+    color: $gray-2;
+  }
+}
