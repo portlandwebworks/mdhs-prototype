@@ -3,3 +3,4 @@ src/main/resources/public/bower_components
 src/main/resources/public/app/css
 node_modules
 nb-configuration.xml
+mdhs-poc.iml
