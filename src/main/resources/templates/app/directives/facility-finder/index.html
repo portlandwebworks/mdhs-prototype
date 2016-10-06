@@ -28,10 +28,7 @@
     </div>
       <div class="row">
         <div class="col-sm-3">
-          <select class="form-control facility-finder__type-filter">
-            <option>Facility Type</option>
-            <option ng-repeat="facilityType in facilityTypes">{{facilityType}}</option>
-          </select>
+          <multiselect options="facilityTypes" title="Test"></multiselect>
         </div>
         <div class="col-sm-3">
           <select class="form-control facility-finder__gender-filter">
