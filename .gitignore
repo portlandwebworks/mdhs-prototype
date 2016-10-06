@@ -4,3 +4,4 @@ src/main/resources/public/app/css
 node_modules
 nb-configuration.xml
 mdhs-poc.iml
+/nbproject/

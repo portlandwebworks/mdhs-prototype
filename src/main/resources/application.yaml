@@ -11,3 +11,7 @@ spring:
     thymeleaf:
         prefix: "classpath:/templates"
         cache: false
+        
+logging:
+    level:
+        com.portlandwebworks: DEBUG
