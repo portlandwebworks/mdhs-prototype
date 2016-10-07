@@ -16,7 +16,7 @@
 .facility-listing__name{
   @extend .col-sm-3;
   @extend .col-lg-4;
-  color: $blue-2;
+  color: $blue-3;
   font-weight: bold;
   position: relative;
 
@@ -117,5 +117,19 @@
 }
 
 .facility-listing__action-button{
-  @extend .action-button;
+  @extend .btn;
+
+  background: $blue-4;
+  color: white;
+  text-transform: uppercase;
+  // Keep the radius even when font-size scales
+  font-size: $font-size-base;
+  line-height: $font-size-base;
+  border-radius: $font-size-base;
+  padding: 9px 60px;
+
+  &:hover {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
 }
