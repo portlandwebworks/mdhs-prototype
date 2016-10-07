@@ -9,31 +9,83 @@
 }
 
 .facility-listing__header{
-  background: $gray-4;
+  background: $gray-7;
+  padding: 15px 50px 15px 60px;
 }
 
 .facility-listing__name{
   @extend .col-sm-3;
+  @extend .col-lg-4;
+  color: $blue-2;
+  font-weight: bold;
+  position: relative;
+
+  &:before{
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 8px;
+    background-image: url(/app/assets/facility-listing/arrow-down.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    position: absolute;
+    left: -25px;
+    top: 9px;
+  }
 }
 
 .facility-listing__rating{
   @extend .col-sm-3;
 }
 
-.facility-listing__not-rated{}
+.facility-listing__not-rated{
+  font-weight: bold;
 
-.facility-listing__star{}
+  &:after{
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url(/app/assets/facility-listing/not-yet-rated.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    position: relative;
+    top: 2px;
+    left: 5px;
+  }
+}
+
+.facility-listing__star{
+  display: inline-block;
+  width: 18px;
+  height: 17px;
+  background-image: url(/app/assets/facility-listing/star.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
 
 .facility-listing__distance{
   @extend .col-sm-3;
 }
 
-.facility-listing__numeric-distance{}
+.facility-listing__distance-value{
+  font-weight: bold;
+}
 
-.facility-listing__content{}
+.facility-listing__distance-modifier{
+
+}
+
+.facility-listing__content{
+  padding: 15px 50px 15px 60px;
+}
 
 .facility-listing__address{
   @extend .col-sm-3;
+  @extend .col-lg-4;
 }
 
 .facility-listing__address-line-1{}
@@ -50,12 +102,20 @@
 
 }
 
-.facility-listing__label{}
+.facility-listing__label{
+  &:after{
+    content: ':';
+  }
+}
 
 .facility-listing__data{}
 
 .facility-listing__action{
   @extend .col-sm-3;
+  @extend .col-lg-2;
+  @extend .text-center;
 }
 
-.facility-listing__action-button{}
+.facility-listing__action-button{
+  @extend .action-button;
+}
