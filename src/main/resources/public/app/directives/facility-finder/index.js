@@ -20,10 +20,10 @@ angular.module('mdhs').directive('facilityFinder', function (SearchOptionsFactor
 
       $scope.search = function(){
         FacilityService.find($scope.facilityFilters)
-          .then(function(facilities){
-            $scope.facilityResults = facilities;
+          .then(function(){
+
           },function(){
-            $scope.facilityResults = [];
+
           })
       }
     }
