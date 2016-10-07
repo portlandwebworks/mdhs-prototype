@@ -1,14 +1,28 @@
 .facility-finder {
   margin-bottom: 40px;
   margin-top: 40px;
-  background-color: $gray-4;
-  padding: 40px;
 }
 .facility-finder__row {
-  margin-bottom:20px;
+  margin-bottom: 40px;
 }
 
-.facility-finder__filters {
-  width: 70%;
+.facility-finder__filter {
+  height: 50px;
 }
 
+.facility-finder__search-button {
+  background-color: $blue-1;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  width: 150px;
+  height: 40px;
+  font-weight: bold;
+}
+
+
+.facility-finder__reset-button {
+  border: none;
+  text-decoration: underline;
+  color: $blue-2;
+}
