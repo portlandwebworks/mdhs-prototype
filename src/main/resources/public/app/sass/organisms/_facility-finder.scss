@@ -3,7 +3,7 @@
   margin-top: 40px;
 }
 .facility-finder__row {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .facility-finder__filter {
@@ -12,6 +12,10 @@
 
 .facility-finder__form-control {
   margin-bottom: 20px;
+
+  @media(min-width: $screen-md){
+    margin-bottom: 0;
+  }
 }
 
 .facility-finder__search-button {
@@ -32,6 +36,9 @@
 }
 
 .facility-finder__add-child {
+  margin-left: 15px;
+  margin-top: 20px;
+  
   &:hover {
     cursor: pointer;
     cursor: hand;
@@ -42,4 +49,8 @@
     top: 4px;
     margin-right: 10px;
   }
+}
+
+.facility-finder__child-info {
+  margin: 0;
 }
