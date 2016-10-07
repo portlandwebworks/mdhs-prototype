@@ -11,11 +11,20 @@
 .site-header__logo-link{
   padding: 5px;
   border: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: 0 auto;
 
   @media (min-width: $screen-md) {
     padding: 25px;
     height: auto;
   }
+}
+
+.site-header__toggle {
+  z-index: 3;
 }
 
 .site-header__logo {
