@@ -1,0 +1,17 @@
+.action-button {
+  @extend .btn;
+
+  background: $blue-3;
+  color: white;
+  text-transform: uppercase;
+  // Keep the radius even when font-size scales
+  font-size: $font-size-base;
+  line-height: $font-size-base;
+  border-radius: $font-size-base;
+  padding: 9px 60px;
+
+  &:hover {
+    color: white;
+    background: darken($blue-3, 10%);
+  }
+}
