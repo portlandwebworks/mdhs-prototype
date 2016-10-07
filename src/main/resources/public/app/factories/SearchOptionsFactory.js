@@ -2,26 +2,15 @@ angular.module('mdhs').factory('SearchOptionsFactory', function searchOptionsFac
   //TODO: switch these out with calls to backend service
 
   var getCounties = function(){
-    //return $http.get('/api/counties').then(function (response) {
-    //  return response.data;
-    //});
-    return [
-      'Chunky',
-      'Booneville',
-      'Alligator'
-    ]
+    return $http.get('/api/facilities/addresses/counties').then(function (response) {
+      return response.data;
+    });
   }
 
   var getCities = function(){
-    //return $http.get('/api/cities').then(function (response) {
-    //  return response.data;
-    //});
-
-    return [
-      'Jasper',
-      'Granada',
-      'Jones'
-    ]
+    return $http.get('/api/facilities/addresses/cities').then(function (response) {
+      return response.data;
+    });
   }
 
   var getProviderTypes = function(){

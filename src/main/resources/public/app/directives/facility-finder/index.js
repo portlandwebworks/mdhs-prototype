@@ -6,11 +6,11 @@ angular.module('mdhs').directive('facilityFinder', function (SearchOptionsFactor
     restrict: 'E',
     templateUrl: '/templates/app/directives/facility-finder/index',
     controller: function ($scope) {
-      $scope.cities         = SearchOptionsFactory.getCities();
-      $scope.counties       = SearchOptionsFactory.getCounties();
-      $scope.facilityTypes  = SearchOptionsFactory.getProviderTypes();
-      $scope.genders        = SearchOptionsFactory.getGenders();
-      $scope.ages           = SearchOptionsFactory.getAges();
+      SearchOptionsFactory.getCities().then(function(cities){ $scope.cities = cities });
+      SearchOptionsFactory.getCounties().then(function(counties){ $scope.counties = counties });
+      $scope.facilityTypes = SearchOptionsFactory.getProviderTypes();
+      $scope.genders = SearchOptionsFactory.getGenders();
+      $scope.ages = SearchOptionsFactory.getAges();
 
      initializeFilters();
 
@@ -47,7 +47,7 @@ angular.module('mdhs').directive('facilityFinder', function (SearchOptionsFactor
 
       function initializeFilters(){
         $scope.facilityFilters = {
-          distance: '10',
+          withinDistance: '10',
           genders: [],
           ages: []
         };
