@@ -4,18 +4,11 @@
   background-color: $gray-4;
   padding: 40px;
 }
+.facility-finder__row {
+  margin-bottom:20px;
+}
+
 .facility-finder__filters {
   width: 70%;
 }
 
-.facility-finder__county-filter {
-  width: 90%;
-}
-
-.facility-finder__distance-filter {
-  width: 90%;
-}
-
-.facility-finder__search-button {
-  width: 100px;
-}
