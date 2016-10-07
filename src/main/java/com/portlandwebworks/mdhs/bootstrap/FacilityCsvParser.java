@@ -2,7 +2,6 @@ package com.portlandwebworks.mdhs.bootstrap;
 
 import com.portlandwebworks.mdhs.facilities.model.Facility;
 import com.portlandwebworks.mdhs.facilities.model.Facility.LicenseType;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
+import org.supercsv.cellprocessor.ParseBool;
 import org.supercsv.cellprocessor.ParseEnum;
 import org.supercsv.cellprocessor.ParseInt;
 import org.supercsv.cellprocessor.constraint.NotNull;
@@ -28,15 +28,15 @@ import org.supercsv.util.CsvContext;
  * @author nick
  */
 @Component
-public class CsvParser {
+public class FacilityCsvParser {
 
-	private static final Logger log = LoggerFactory.getLogger(CsvParser.class);
+	private static final Logger log = LoggerFactory.getLogger(FacilityCsvParser.class);
 
-	static final String CSV_RESOURCE = "classpath:defaults/data.csv";
+	static final String CSV_RESOURCE = "classpath:db/facilities.csv";
 	private final ResourceLoader resourceLoader;
 
 	@Autowired
-	public CsvParser(ResourceLoader resourceLoader) {
+	public FacilityCsvParser(ResourceLoader resourceLoader) {
 		this.resourceLoader = resourceLoader;
 	}
 
@@ -136,7 +136,8 @@ public class CsvParser {
 		"phoneNumber",
 		"openToGender",
 		"openToAgeRange",
-		"openings"
+		"openings",
+		"acceptsConvictions"
 	};
 	private final CellProcessor[] CSV_CELL_PROCESSORS = new CellProcessor[]{
 		STR_PROCESSOR,
@@ -153,7 +154,8 @@ public class CsvParser {
 		STR_PROCESSOR, //phone
 		new NotNull(new ParseAllowedGender()),
 		new ParseOpenToaAgeRange(),
-		new ParseInt()
+		new ParseInt(),
+		new ParseBool("1", "0")
 	};
 
 }

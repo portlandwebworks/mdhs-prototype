@@ -1,25 +1,50 @@
 package com.portlandwebworks.mdhs.facilities.model;
 
+import com.portlandwebworks.mdhs.BasePersistable;
 import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author nick
  */
-public class Facility {
+@Entity
+@Table(name = "facilities")
+public class Facility extends BasePersistable {
 
+	@NotNull
+	@Column(name="name_")
 	private String name;
+	@NotNull
 	private String city;
+	@NotNull
 	private String county;
+	@NotNull
+	@Column(name="zip_code")
 	private String zipCode;
 	private String phoneNumber;
 	private String description;
+	@Column(name="quality_rating")
 	private Integer qualityRating;
 	private Integer capacity;
+	@NotNull
+	@Column(name="license_type")
 	private LicenseType licenseType;
 	private AllowedGender openToGender;
+	@ElementCollection()
+	@CollectionTable(name="facility_age_ranges")
+	@Column(name="age_range")
+	@JoinColumn(name = "facility_id")
 	private List<AgeRange> openToAgeRange;
 	private Integer openings;
+	@Column(name="accepts_convictions")
+	private boolean acceptsConvictions;
 
 	public Facility() {
 	}
@@ -124,6 +149,14 @@ public class Facility {
 
 	public void setOpenings(Integer openings) {
 		this.openings = openings;
+	}
+
+	public boolean isAcceptsConvictions() {
+		return acceptsConvictions;
+	}
+
+	public void setAcceptsConvictions(boolean acceptsConvictions) {
+		this.acceptsConvictions = acceptsConvictions;
 	}
 
 	public static enum AllowedGender {

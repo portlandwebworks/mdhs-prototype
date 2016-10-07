@@ -1,13 +1,13 @@
 
 spring:
-#    datasource:
-#        test-on-borrow: true
-#        validation-query: SELECT 1;
-#        url: "jdbc:hsqldb:mem:?shutdown=true"
+    datasource:
+        test-on-borrow: true
+        validation-query: SELECT 1;
+        url: "jdbc:hsqldb:mem:?shutdown=false"
 
-#    jpa:
-#        hibernate:
-#            ddl-auto: none
+    jpa:
+        hibernate:
+            ddl-auto: none
     thymeleaf:
         prefix: "classpath:/templates"
         cache: false
@@ -15,3 +15,6 @@ spring:
 logging:
     level:
         com.portlandwebworks: DEBUG
+        
+liquibase:
+    changeLog: "classpath:db/changelog/db.changelog-master.xml"
