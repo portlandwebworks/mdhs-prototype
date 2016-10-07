@@ -26,5 +26,11 @@ angular.module('mdhs').directive('facilityFinder', function (SearchOptionsFactor
 
           })
       }
+
+      $scope.reset = function(){
+        $scope.facilityFilters = {
+          distance: '10'
+        }
+      }
     }
   }});
