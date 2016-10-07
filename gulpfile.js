@@ -13,8 +13,7 @@ gulp.task('convert-sass', function () {
 			.pipe(sass({
 				outputStyle: 'compressed',
 				includePaths: [
-					'src/main/resources/public/bower_components/bootstrap-sass-official/assets/stylesheets',
-          'src/main/resources/public/bower_components/bootstrap-multiselect/dist/css'
+					'src/main/resources/public/bower_components/bootstrap-sass-official/assets/stylesheets'
 				],
 				sourcemaps: true
 			}))
