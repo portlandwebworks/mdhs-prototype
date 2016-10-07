@@ -12,25 +12,29 @@ The application was developed using best practices for user centered design and 
 
 ## INSTALLATION
 
-xxxxxxxx
+### mdhs-frontend
 
 Requirements:
 
-Java 8
-Maven 3.x (must be able to run mvn on the command line)
-Node + NPM
-To Run:
+* Java 8
+* Maven 3.x (must be able to run mvn on the command line)
+* Node + NPM
 
+**To Run:**
+'''
 npm install
 mvn spring-boot:run
+'''
 Point a browser to http://localhost:8080/index.jsp
 
 Login and user info all hard coded to accept anything at the moment.
 
 To keep your SASS files compiling and jslint checking run:
-
+'''
 gulp watch
-Current Endpoints:
+'''
+
+**Current Endpoints:**
 
 /api/account
 Supports GET, POST, PUT
@@ -41,15 +45,15 @@ POST only
 GET only
 Refer to model objects in Java source for available properties.
 
-mdhs-backend Build Status
+### mdhs-backend
 
-Requirements:
+**Requirements:**
 
 Java 8
 Maven 3.x (must be able to run mvn on the command line)
 MySQL 5.6.x or 5.7.x
-To Run:
 
+**To Run:**
 Create a new database and user in MySQL for local development. Name does not matter as you will configure that next.
 
 Copy application.yaml.example to application.yaml and modify database parameters to match your local development setup. Assuming port numbers are the same the only thing you will have to change is the database name on the end of the URL and the username and password values.
@@ -59,12 +63,10 @@ Then you can run the application.
 mvn spring-boot:run
 By default the server runs on port 8090, and you can view the documentation for the endpoints here.
 
-Database:
-
+**Database:**
 The database schema is currently controlled by Liquibase, and it's integration with Spring Boot. On startup the application will automatically run any outstanding migrations.
 
-Application Notes:
-
+**Application Notes:**
 On first startup a new, default, user is created with the email of alice@caseworker.com. When this happens you will see a log message telling you the users randomly generated password. This should be copied down if you wish to login as this test user.
 
 ## TECHNICAL APPROACH
@@ -73,11 +75,11 @@ A more comprehensive description of our Technical Approach can be found on our C
 
 In the event that external artifacts are not considered admissable, we have also provided many of the associated documents and images within this repository - Link
 
-A. Assigned a team leader.
+**A. Assigned a team leader.**
 
 John Gordon, Director of Software Development
 
-B. Team Members (and corresponding ADPQ labor categories)
+**B. Team Members (and corresponding ADPQ labor categories)**
 
 Product Manager: Tom Lovering
 Technical Architect: Nick Stuart
@@ -90,7 +92,7 @@ Security Engineer: Chris Davis
 Agile Coach: Alison Schestopol
 Quality Assurance: Carl Swanson
 
-C. User Research
+**C. User Research**
 
 User research and testing included the following:
 
@@ -101,7 +103,7 @@ Initial wireframes reviewed with user - Link
 Updated wireframe reviewed by external testers - Link
 Prototypes reviewed by external users - Link
 
-D. Used at least three “human-centered design” techniques or tools
+**D. Used at least three “human-centered design” techniques or tools**
 
 Multiple human-centered design techniques, were used in the development of the PoC. These included:
 
@@ -112,12 +114,11 @@ Sharing findings with the team and incorporation of feedback - Link
 Use of a simple and flexible design style guide - Link
 Usability testing of wireframes - Link
 Usability testing of prototypes - Link
-E. Created or used a design style guide
 
+**E. Created or used a design style guide**
 A visual style guide was created by the designer to define styles, colors, fonts, etc. Link
 
-F. Performed usability tests with people
-
+**F. Performed usability tests with people**
 Usability tests were performed at several points in the development process, including:
 
 Internal testing of initial concepts
@@ -133,8 +134,8 @@ Use of Scrum methodology
 On-going grooming of the product backlog
 Development and code reviews completed within a single Sprint
 Sprint Demo for review by Product Owner
-H. Responsive Design
 
+**H. Responsive Design**
 The PoC has been developed as mobile-responsive. Quality Assurance testing assured that the PoC matched business requirements:
 
 Leveraged JIRA plugin test case application called Zephyr - Link
@@ -142,9 +143,10 @@ Regression testing of desktop, mobile, and tablet
 One test case for each user story
 If test case passes the story is closed, if it fails a subtask is created and it is retested
 Fixes not addressed were added to the Backlog for future enhancements
+
 Release Notes
 
-I. Used at least five modern and open-source technologies
+**I. Used at least five modern and open-source technologies**
 
 Numerous open-source technologies have been utilized. They include:
 
@@ -155,11 +157,11 @@ Spring Boot with Hibernate / JPA and Jersey - server side logic
 Liquibase - Database schema migration source control
 TravisCI - continuous integration
 MySQL - data storage
-J. Deployed the prototype on PaaS
 
-The PoC has been deployed to Google Cloud Container Engine Link. The Container Engine is built on the open source Kubernetes system, providing flexibility to take advantage of on-premises, hybrid, or public cloud infrastructure. Many cloud providers are working to integrate Kubernetes into their platforms such as Red Hat, Microsoft, IBM, OpenStack, and VMware. Kubernetes can also be deployed to Amazon GovCloud. Kubernetes also has a number of other benefits such as the ability to automatically scale based on real-time user demand. Please see the kubernetes (https://github.com/portlandwebworks/chhs-prototype/tree/develop/kubernetes) folder for a functional demo of the code used to provision the prototype environment.
+**J. Deployed the prototype on PaaS**
+The PoC has been deployed to Google Cloud Container Engine Link. The Container Engine is built on the open source Kubernetes system, providing flexibility to take advantage of on-premises, hybrid, or public cloud infrastructure. Many cloud providers are working to integrate Kubernetes into their platforms such as Red Hat, Microsoft, IBM, OpenStack, and VMware. Kubernetes can also be deployed to Amazon GovCloud. Kubernetes also has a number of other benefits such as the ability to automatically scale based on real-time user demand. Please see the kubernetes (xxxxxxxxxxxxxxxxxxx) folder for a functional demo of the code used to provision the prototype environment.
 
-K. Developed automated unit tests for their code
+**K. Developed automated unit tests for their code**
 
 JUnit and EasyMock were utilized to cover unit testing needs while utilizing Spring based design methodologies to help write testable code. First pass integration tests were also established using the following technologies:
 
@@ -173,16 +175,14 @@ For integration tests, happy-path testing was conducted on stories CP-21, CP-16,
 Protractor is designed to drive AngularJS apps with base steps written in JavaScript
 Cucumber employs base steps using pseudo-human-readable scripts
 Selenium drives automation in browsers
-L. Used a continuous integration system
 
+**L. Used a continuous integration system**
 This project is leveraging Travis CI for it's build environment. All code pushed to GitHub is automatically run in Travis and if there are any test failures the team is notified in the projects Slack channel. If there are no test failures, the most recent code is automatically deployed to the Continuous Integration environment. Travis CI also handles deployment of the Docker images to a public repository and it integrates directly with Kubernetes to release the most recent version of the Docker images.
 
-M. Used configuration management
-
+**M. Used configuration management**
 By utilizing Kubernetes, we are able to deploy and update secrets and application configuration without rebuilding the Docker image and without exposing sensitive data in your project source code.
 
-N. Setup or used continuous monitoring
-
+**N. Setup or used continuous monitoring**
 This project is monitored using Google Stack Driver, the monitoring tools are built into the Google Cloud Platform. Additionally, StackDriver Logging aggregates and analyze all of the logs from the deployed containers. The following tests are in place:
 
 URL Monitoring - Tracking and alerting on the availability of the front end and backend services
@@ -192,12 +192,10 @@ O. Deployed their software in a container
 
 This project is deployed using Docker container technology. This allows the application to be portable between most major cloud providers, as well as providing a consistent environment between development and production.
 
-P. Provided sufficient documentation to install and run their prototype on another machine
-
+**P. Provided sufficient documentation to install and run their prototype on another machine**
 The README.md file located in the repository contains complete instructions for deploying and running the prototype on another machine.
 
-Q. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge
-
+**Q. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge**
 All of the tools used to create and run the prototype are openly licensed and free of charge and are commonly used by the Portland Webworks development team.
 
 ## CONTACT INFO
