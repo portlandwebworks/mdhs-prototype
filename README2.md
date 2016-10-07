@@ -1,15 +1,16 @@
 
+# Mississippi Vendor Challenge
 
-PROTOTYPE URL
+## PROTOTYPE URL
 Goes here
 
-OVERVIEW
+## OVERVIEW
 
 The application has been developed to meet the submission requirements for the Mississippi Vendor Challenge. The application includes the ability to perform a proximity search for a child care provider and applying a variety of filters to the search and the results.
 
 The application was developed using best practices for user centered design and agile development, which is detailed in further detail within this document. These are all practices that our company employs on a regular basis through our extensive work with public-sector agencies.
 
-INSTALLATION
+## INSTALLATION
 
 xxxxxxxx
 
@@ -40,7 +41,7 @@ POST only
 GET only
 Refer to model objects in Java source for available properties.
 
-chhs-backend Build Status
+mdhs-backend Build Status
 
 Requirements:
 
@@ -66,7 +67,7 @@ Application Notes:
 
 On first startup a new, default, user is created with the email of alice@caseworker.com. When this happens you will see a log message telling you the users randomly generated password. This should be copied down if you wish to login as this test user.
 
-TECHNICAL APPROACH
+## TECHNICAL APPROACH
 
 A more comprehensive description of our Technical Approach can be found on our Confluence wiki - Link
 
@@ -78,7 +79,7 @@ John Gordon, Director of Software Development
 
 B. Team Members (and corresponding ADPQ labor categories)
 
-Product Manager: John Gordon
+Product Manager: Tom Lovering
 Technical Architect: Nick Stuart
 Interaction Designer/User Researcher: Brittany Cornell
 Visual Designer: Christopher Prinn
@@ -199,10 +200,10 @@ Q. Prototype and underlying platforms used to create and run the prototype are o
 
 All of the tools used to create and run the prototype are openly licensed and free of charge and are commonly used by the Portland Webworks development team.
 
-CONTACT INFO
+## CONTACT INFO
 
 Phone: 207-773-6600 Website: http://www.portlandwebworks.com Email: info@portlandwebworks.com
 
-COPYRIGHT
+## COPYRIGHT
 
 Copyright 2016 Portland Webworks. All rights reserved.
