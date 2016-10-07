@@ -5,3 +5,4 @@ node_modules
 nb-configuration.xml
 mdhs-poc.iml
 /nbproject/
+.DS_Store
