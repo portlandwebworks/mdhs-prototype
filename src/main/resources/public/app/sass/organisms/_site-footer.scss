@@ -1,6 +1,25 @@
+.site-footer__top {
+  height:25px;
+  margin-top: 40px;
+}
+
+.site-footer__top-green {
+  height: 100%;
+  background-color: $green-1;
+}
+
+.site-footer__top-gray {
+  height: 100%;
+  background-color: $gray-2;
+}
+
+.site-footer__top-blue {
+  height: 100%;
+  background-color: $blue-5;
+}
+
+
 .site-footer__container{
-  border-top: solid 15px $blue-1;
-  background-color: $gray-6;
   color: $gray-2;
   min-height: 200px;
 }
@@ -8,6 +27,7 @@
 .site-footer__media-image {
   display: inline-block;
   width: 40px;
+  margin: 20px 5px;
 }
 
 .site-footer__link{
@@ -16,12 +36,25 @@
 
 .site-footer__logo {
   margin-bottom: 20px;
+  width: 100px;
+}
+
+.site-footer__mdhs {
+  font-weight: bold;
+  color: $gray-3;
 }
 
 .site-footer__phone {
-  font-size: 12px;
+  font-weight: bold;
+  margin: 30px 0 50px 0;
+  color: $gray-3;
 }
 
+.site-footer__report {
+  font-weight: bold;
+  color: $red-1;
+  margin-bottom: 30px;
+}
 
 .site-footer__pww {
   margin: 40px 0;
@@ -29,4 +62,8 @@
   a {
     color: $gray-2;
   }
+}
+
+.site-footer__credit {
+  font-size: 14px;
 }
