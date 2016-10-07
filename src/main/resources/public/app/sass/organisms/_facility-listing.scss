@@ -1,0 +1,61 @@
+.facility-listing{}
+
+.facility-listing__item{}
+
+.facility-listing__row{
+  // Bootstrap columns need to be row'ed since we want its contents to be snug
+  // to the edge of the content, while maintaining gutter from the edges.
+  @extend .row;
+}
+
+.facility-listing__header{
+  background: $gray-4;
+}
+
+.facility-listing__name{
+  @extend .col-sm-3;
+}
+
+.facility-listing__rating{
+  @extend .col-sm-3;
+}
+
+.facility-listing__not-rated{}
+
+.facility-listing__star{}
+
+.facility-listing__distance{
+  @extend .col-sm-3;
+}
+
+.facility-listing__numeric-distance{}
+
+.facility-listing__content{}
+
+.facility-listing__address{
+  @extend .col-sm-3;
+}
+
+.facility-listing__address-line-1{}
+
+.facility-listing__address-line-2{}
+
+.facility-listing__address-line-3{}
+
+.facility-listing__info{
+  @extend .col-sm-3;
+}
+
+.facility-listing__info-line{
+
+}
+
+.facility-listing__label{}
+
+.facility-listing__data{}
+
+.facility-listing__action{
+  @extend .col-sm-3;
+}
+
+.facility-listing__action-button{}
