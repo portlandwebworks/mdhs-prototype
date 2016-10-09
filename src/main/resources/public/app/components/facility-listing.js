@@ -2,11 +2,11 @@
 
 angular.module('mdhs').component('facilityListing', {
   templateUrl: '/templates/app/components/facility-listing',
-  bindings: {
-    facilities: '<'
-  },
-  controller: function (allowedGender, ageRange, licenseType) {
+  controller: function (allowedGender, ageRange, licenseType, FacilityService) {
     var ctrl = this;
+
+    // Bind facilities array on the service to this controller
+    ctrl.facilities = FacilityService.getCurrentFacilities();
 
     /**
      * Returns an object containing the smallest and largest ages supported by
