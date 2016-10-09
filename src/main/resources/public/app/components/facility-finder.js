@@ -4,7 +4,7 @@
 angular.module('mdhs').directive('facilityFinder', function (SearchOptionsFactory, FacilityService) {
   return {
     restrict: 'E',
-    templateUrl: '/templates/app/directives/facility-finder/index',
+    templateUrl: '/templates/app/components/facility-finder',
     controller: function ($scope) {
       SearchOptionsFactory.getCities().then(function(cities){ $scope.cities = cities });
       SearchOptionsFactory.getCounties().then(function(counties){ $scope.counties = counties });

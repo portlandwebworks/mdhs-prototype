@@ -3,6 +3,6 @@
 angular.module('mdhs').directive('siteFooter', function () {
   return {
     restrict: 'C',
-    templateUrl: '/templates/app/directives/site-footer/index'
+    templateUrl: '/templates/app/components/site-footer'
   };
 });

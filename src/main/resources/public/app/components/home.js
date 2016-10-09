@@ -1,5 +1,5 @@
 angular.module('mdhs').component('home', {
-	templateUrl: '/templates/app/pages/home/index',
+	templateUrl: '/templates/app/components/home',
 	controller: function (FacilityService) {
 		var ctrl = this;
 		ctrl.message = 'Hello MDHS!';

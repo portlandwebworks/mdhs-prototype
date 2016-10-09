@@ -1,5 +1,5 @@
 angular.module('mdhs').component('facilityListing', {
-  templateUrl: '/templates/app/directives/facility-listing/index',
+  templateUrl: '/templates/app/components/facility-listing',
   bindings: {
     facilities: '<'
   },
