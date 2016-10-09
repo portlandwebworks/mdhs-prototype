@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('mdhs').component('facilityListing', {
   templateUrl: '/templates/app/components/facility-listing',
   bindings: {
