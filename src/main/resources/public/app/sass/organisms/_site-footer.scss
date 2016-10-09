@@ -1,27 +1,37 @@
 .site-footer__top {
+  @extend .row;
+
   height:25px;
   margin-top: 40px;
 }
 
 .site-footer__top-green {
+  @extend .col-xs-4;
   height: 100%;
   background-color: $green-1;
 }
 
 .site-footer__top-gray {
+  @extend .col-xs-4;
   height: 100%;
   background-color: $gray-2;
 }
 
 .site-footer__top-blue {
+  @extend .col-xs-4;
   height: 100%;
   background-color: $blue-5;
 }
 
 
 .site-footer__container{
+  @extend .container;
   color: $gray-2;
   min-height: 200px;
+}
+
+.site-footer__row{
+  @extend .row;
 }
 
 .site-footer__media-image {
@@ -58,6 +68,9 @@
 }
 
 .site-footer__pww {
+  @extend .col-sm-12;
+  @extend .text-center;
+
   margin: 40px 0;
 
   a {
@@ -66,5 +79,6 @@
 }
 
 .site-footer__credit {
+  @extend .center-block;
   font-size: 14px;
 }
