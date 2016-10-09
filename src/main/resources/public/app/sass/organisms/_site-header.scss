@@ -1,7 +1,15 @@
 .site-header__navigation{
+  @extend .navbar;
+  @extend .navbar-default;
+  @extend .navbar-fixed-top;
+
   background: white;
   border: none;
   margin: 0 auto;
+}
+
+.site-header__navbar-header{
+  @extend .navbar-header;
 }
 
 .site-header__collapse {
@@ -9,6 +17,9 @@
 }
 
 .site-header__logo-link{
+  @extend .navbar-brand;
+  @extend .center-block;
+
   padding: 5px;
   border: none;
   position: absolute;
@@ -46,6 +57,12 @@
       border: none;
     }
   }
+}
+
+.site_header__links{
+  @extend .nav;
+  @extend .navbar-nav;
+  @extend .navbar-right;
 }
 
 .site-header__link{

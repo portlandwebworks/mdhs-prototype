@@ -1,18 +1,27 @@
-<nav class="site-header__navigation navbar navbar-default navbar-fixed-top">
-    <div class="site-header__navbar-header navbar-header">
-      <button type="button" class="navbar-toggle site-header__toggle" data-toggle="collapse" data-target="#topNav">
+<!--
+  We cannot move navbar-toggle, navbar-collapse and collapse classes into CSS
+  because Bootstrap uses those classes to hook JS for menu collapse behavior.
+-->
+
+<nav class="site-header__navigation">
+    <div class="site-header__navbar-header">
+      <button type="button" class="site-header__toggle navbar-toggle " data-toggle="collapse" data-target="#topNav">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a  class="site-header__logo-link navbar-brand center-block" href="#/home">
+      <a class="site-header__logo-link" href="#/home">
         <img class="site-header__logo" alt="MDHS" src="app/assets/home/logo.png"/>
       </a>
     </div>
-    <div class="site-header__collapse collapse navbar-collapse" id="topNav">
-      <ul class="site_header__links nav navbar-nav navbar-right">
-        <li class="site-header__link-item"><a href="#/search" class="site-header__link site-header__link-facility">Childcare Facility Finder</a></li>
-        <li class="site-header__link-item"><a href="#/support" class="site-header__link site_header__link-help">About</a></li>
+    <div class="site-header__collapse navbar-collapse collapse" id="topNav">
+      <ul class="site_header__links">
+        <li class="site-header__link-item">
+          <a href="#/search" class="site-header__link">Childcare Facility Finder</a>
+        </li>
+        <li class="site-header__link-item">
+          <a href="#/support" class="site-header__link">About</a>
+        </li>
       </ul>
     </div>
 </nav>
