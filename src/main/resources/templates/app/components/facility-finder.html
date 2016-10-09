@@ -9,13 +9,13 @@
         <!--</select>-->
         <!--</div>-->
         <div class="col-sm-3">
-          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="facilityFilters.city">
+          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.city">
             <option selected="true" value="">City</option>
-            <option ng-repeat="city in cities">{{city}}</option>
+            <option ng-repeat="city in $ctrl.cities">{{city}}</option>
           </select>
         </div>
         <div class="col-sm-3">
-          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="facilityFilters.withinDistance">
+          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.withinDistance">
             <option selected="true" value="10">Within 10 miles</option>
             <option value="25">Within 25 miles</option>
             <option value="50">Within 50 miles</option>
@@ -23,13 +23,13 @@
           </select>
         </div>
         <div class="col-sm-3">
-          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="facilityFilters.facilityType">
+          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.facilityType">
             <option selected="true" value="">Facility Type</option>
             <option ng-repeat="type in facilityTypes" value="{{type.value}}">{{type.label}}</option>
           </select>
         </div>
         <div class="col-sm-3">
-          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="facilityFilters.size">
+          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.size">
             <option selected="true" value="">Size</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -42,11 +42,11 @@
 
       <div class="row facility-finder__row">
         <div class="col-sm-3">
-          <button type="submit" class="btn btn-default facility-finder__form-control facility-finder__search-button" ng-click="search()">SEARCH
+          <button type="submit" class="btn btn-default facility-finder__form-control facility-finder__search-button" ng-click="$ctrl.search()">SEARCH
           </button>
         </div>
         <div class="col-sm-3">
-          <button type="button" class="btn btn-default facility-finder__reset-button" ng-click="reset()">Reset All
+          <button type="button" class="btn btn-default facility-finder__reset-button" ng-click="$ctrl.reset()">Reset All
             Filters
           </button>
         </div>
@@ -54,21 +54,21 @@
       <hr/>
       <div class="row facility-finder__row">
         <div class="form__sub-title-text">Child Information (Optional)</div>
-        <div class="row facility-finder__row facility-finder__child-info" ng-repeat="child in childInfo">
+        <div class="row facility-finder__row facility-finder__child-info" ng-repeat="child in $ctrl.childInfo">
           <div class="col-sm-3">
             <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="child.gender">
               <option selected="true" value="">Gender</option>
-              <option ng-repeat="gender in genders" value="{{gender.value}}">{{gender.label}}</option>
+              <option ng-repeat="gender in $ctrl.genders" value="{{gender.value}}">{{gender.label}}</option>
             </select>
           </div>
           <div class="col-sm-3">
             <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="child.age">
               <option selected="true" value="">Age</option>
-              <option ng-repeat="age in ages" value="{{age.value}}">{{age.label}}</option>
+              <option ng-repeat="age in $ctrl.ages" value="{{age.value}}">{{age.label}}</option>
             </select>
           </div>
         </div>
-        <div class="facility-finder__add-child" ng-click="addChild()">Add a Child</div>
+        <div class="facility-finder__add-child" ng-click="$ctrl.addChild()">Add a Child</div>
       </div>
     </form>
   </div>
