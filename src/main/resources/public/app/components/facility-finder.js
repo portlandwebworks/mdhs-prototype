@@ -2,14 +2,14 @@
 
 angular.module('mdhs').component('facilityFinder', {
   templateUrl: '/templates/app/components/facility-finder',
-  controller: function (SearchOptionsFactory, FacilityService) {
+  controller: function (SearchOptionsService, FacilityService) {
     var controller = this;
 
-    SearchOptionsFactory.getCities().then(function(cities){ controller.cities = cities });
-    SearchOptionsFactory.getCounties().then(function(counties){ controller.counties = counties });
-    controller.facilityTypes = SearchOptionsFactory.getProviderTypes();
-    controller.genders = SearchOptionsFactory.getGenders();
-    controller.ages = SearchOptionsFactory.getAges();
+    SearchOptionsService.getCities().then(function(cities){ controller.cities = cities });
+    SearchOptionsService.getCounties().then(function(counties){ controller.counties = counties });
+    controller.facilityTypes = SearchOptionsService.getProviderTypes();
+    controller.genders = SearchOptionsService.getGenders();
+    controller.ages = SearchOptionsService.getAges();
 
    initializeFilters();
 

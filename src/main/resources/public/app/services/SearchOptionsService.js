@@ -1,19 +1,19 @@
-angular.module('mdhs').factory('SearchOptionsFactory', function searchOptionsFactory($http) {
+angular.module('mdhs').service('SearchOptionsService', function searchOptionsFactory($http) {
   //TODO: switch these out with calls to backend service
 
-  var getCounties = function(){
+  this.getCounties = function(){
     return $http.get('/api/facilities/addresses/counties').then(function (response) {
       return response.data;
     });
-  }
+  };
 
-  var getCities = function(){
+  this.getCities = function(){
     return $http.get('/api/facilities/addresses/cities').then(function (response) {
       return response.data;
     });
-  }
+  };
 
-  var getProviderTypes = function(){
+  this.getProviderTypes = function(){
     //return $http.get('/api/provider-types').then(function (response) {
     //  return response.data;
     //});
@@ -30,17 +30,17 @@ angular.module('mdhs').factory('SearchOptionsFactory', function searchOptionsFac
     ];
 
     return types;
-  }
+  };
 
-  var getGenders = function(){
+  this.getGenders = function(){
     return [
       { value: 3, label: 'Both'},
       { value: 1, label: 'Boy'},
       { value: 2, label: 'Girl'}
     ]
-  }
+  };
 
-  var getAges = function(){
+  this.getAges = function(){
     return [
       { value: 1, label: '0-2 years'},
       { value: 2, label: '3-6 years'},
@@ -48,13 +48,5 @@ angular.module('mdhs').factory('SearchOptionsFactory', function searchOptionsFac
       { value: 4, label: '11-14 years'},
       { value: 5, label: '15-18 years'},
     ]
-  }
-
-  return {
-    getCounties:          getCounties,
-    getCities:            getCities,
-    getProviderTypes:     getProviderTypes,
-    getGenders:           getGenders,
-    getAges:              getAges
   };
 });
