@@ -1,56 +1,55 @@
 'use strict';
 
+angular.module('mdhs').component('facilityFinder', {
+  templateUrl: '/templates/app/components/facility-finder',
+  controller: function (SearchOptionsFactory, FacilityService) {
+    var controller = this;
 
-angular.module('mdhs').directive('facilityFinder', function (SearchOptionsFactory, FacilityService) {
-  return {
-    restrict: 'E',
-    templateUrl: '/templates/app/components/facility-finder',
-    controller: function ($scope) {
-      SearchOptionsFactory.getCities().then(function(cities){ $scope.cities = cities });
-      SearchOptionsFactory.getCounties().then(function(counties){ $scope.counties = counties });
-      $scope.facilityTypes = SearchOptionsFactory.getProviderTypes();
-      $scope.genders = SearchOptionsFactory.getGenders();
-      $scope.ages = SearchOptionsFactory.getAges();
+    SearchOptionsFactory.getCities().then(function(cities){ controller.cities = cities });
+    SearchOptionsFactory.getCounties().then(function(counties){ controller.counties = counties });
+    controller.facilityTypes = SearchOptionsFactory.getProviderTypes();
+    controller.genders = SearchOptionsFactory.getGenders();
+    controller.ages = SearchOptionsFactory.getAges();
 
-     initializeFilters();
+   initializeFilters();
 
-      $scope.childInfo = [
-        { gender: null, age: null }
-      ];
+    controller.childInfo = [
+      { gender: null, age: null }
+    ];
 
-      $scope.search = function(){
-        _.forEach($scope.childInfo, function(child){
-          if(!_.includes($scope.facilityFilters.genders,child.gender)){
-            $scope.facilityFilters.genders.push(child.gender);
-          }
-          if(!_.includes($scope.facilityFilters.ages,child.age)){
-            $scope.facilityFilters.ages.push(child.age);
-          }
-        });
+    controller.search = function(){
+      _.forEach(controller.childInfo, function(child){
+        if(!_.includes(controller.facilityFilters.genders,child.gender)){
+          controller.facilityFilters.genders.push(child.gender);
+        }
+        if(!_.includes(controller.facilityFilters.ages,child.age)){
+          controller.facilityFilters.ages.push(child.age);
+        }
+      });
 
-        FacilityService.find($scope.facilityFilters)
-          .then(function(){
+      FacilityService.find(controller.facilityFilters)
+        .then(function(){
 
-          },function(){
+        },function(){
 
-          })
-      };
+        })
+    };
 
-      $scope.reset = function(){
-        initializeFilters();
-        $scope.childInfo = [{ gender: null, age: null }];
-      }
-
-      $scope.addChild = function(){
-        $scope.childInfo.push({ gender: null, age: null });
-      }
-
-      function initializeFilters(){
-        $scope.facilityFilters = {
-          withinDistance: '10',
-          genders: [],
-          ages: []
-        };
-      }
+    controller.reset = function(){
+      initializeFilters();
+      controller.childInfo = [{ gender: null, age: null }];
     }
-  }});
+
+    controller.addChild = function(){
+      controller.childInfo.push({ gender: null, age: null });
+    }
+
+    function initializeFilters(){
+      controller.facilityFilters = {
+        withinDistance: '10',
+        genders: [],
+        ages: []
+      };
+    }
+  }
+});

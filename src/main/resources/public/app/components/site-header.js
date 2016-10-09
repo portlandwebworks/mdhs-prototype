@@ -1,8 +1,5 @@
 'use strict';
 
-angular.module('mdhs').directive('siteHeader', function () {
-  return {
-    restrict: 'C',
-    templateUrl: '/templates/app/components/site-header'
-  };
+angular.module('mdhs').component('siteHeader', {
+  templateUrl: '/templates/app/components/site-header'
 });
