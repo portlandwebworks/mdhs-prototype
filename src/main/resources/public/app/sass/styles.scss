@@ -16,11 +16,10 @@
 @import "organisms/site-footer";
 @import "organisms/facility-finder";
 @import "organisms/angular-google-map";
-@import "organisms/page-form";
 @import "organisms/facility-listing";
+@import "organisms/home";
+@import "organisms/search";
 
 // Templates (layouts, etc.)
 
 // Pages (page-specific styling, etc.)
-@import "pages/home";
-@import "pages/search";

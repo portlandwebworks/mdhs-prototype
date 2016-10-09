@@ -1,6 +1,12 @@
-.page-home {
+.home {
+  @extend .container;
+
   top: 100px;
   @media(min-width: $screen-md){
     margin-bottom:60px;
   }
+}
+
+.home__summary{
+  @extend .row;
 }
