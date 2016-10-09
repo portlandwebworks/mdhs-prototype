@@ -1,19 +1,21 @@
 angular.module('mdhs').service('SearchOptionsService', function searchOptionsFactory($http) {
+  var service = this;
+
   //TODO: switch these out with calls to backend service
 
-  this.getCounties = function(){
+  service.getCounties = function(){
     return $http.get('/api/facilities/addresses/counties').then(function (response) {
       return response.data;
     });
   };
 
-  this.getCities = function(){
+  service.getCities = function(){
     return $http.get('/api/facilities/addresses/cities').then(function (response) {
       return response.data;
     });
   };
 
-  this.getProviderTypes = function(){
+  service.getProviderTypes = function(){
     //return $http.get('/api/provider-types').then(function (response) {
     //  return response.data;
     //});
@@ -32,7 +34,7 @@ angular.module('mdhs').service('SearchOptionsService', function searchOptionsFac
     return types;
   };
 
-  this.getGenders = function(){
+  service.getGenders = function(){
     return [
       { value: 3, label: 'Both'},
       { value: 1, label: 'Boy'},
@@ -40,7 +42,7 @@ angular.module('mdhs').service('SearchOptionsService', function searchOptionsFac
     ]
   };
 
-  this.getAges = function(){
+  service.getAges = function(){
     return [
       { value: 1, label: '0-2 years'},
       { value: 2, label: '3-6 years'},

@@ -3,10 +3,10 @@
 angular.module('mdhs').component('facilityListing', {
   templateUrl: '/templates/app/components/facility-listing',
   controller: function (allowedGender, ageRange, licenseType, FacilityService) {
-    var ctrl = this;
+    var controller = this;
 
     // Bind facilities array on the service to this controller
-    ctrl.facilities = FacilityService.getCurrentFacilities();
+    controller.facilities = FacilityService.getCurrentFacilities();
 
     /**
      * Returns an object containing the smallest and largest ages supported by
@@ -31,7 +31,7 @@ angular.module('mdhs').component('facilityListing', {
      *
      * @param {number} id The facility ID.
      */
-    ctrl.contactFacility = function(id){
+    controller.contactFacility = function(id){
       // TODO
     };
 
@@ -42,7 +42,7 @@ angular.module('mdhs').component('facilityListing', {
      * @param {number} n The expected length of the array.
      * @returns {Array} An array with n length.
      */
-    ctrl.range = function(n){
+    controller.range = function(n){
       return new Array(n);
     };
 
@@ -52,7 +52,7 @@ angular.module('mdhs').component('facilityListing', {
      * @param {String} genderConstant The enum representation of the gender accepted.
      * @returns {String} The human-friendly representation of the gender accepted.
      */
-    ctrl.getGendersAccepted = function(genderConstant){
+    controller.getGendersAccepted = function(genderConstant){
       return allowedGender[genderConstant];
     };
 
@@ -62,7 +62,7 @@ angular.module('mdhs').component('facilityListing', {
      * @param {array} ageConstants An array of age range enums.
      * @returns {number} The minimum age of the set.
      */
-    ctrl.getMinAgeAccepted = function(ageConstants){
+    controller.getMinAgeAccepted = function(ageConstants){
       return getAgeRangeFromAgeConstants(ageConstants).minimumAge;
     };
 
@@ -72,7 +72,7 @@ angular.module('mdhs').component('facilityListing', {
      * @param {array} ageConstants An array of age range enums.
      * @returns {number} The maximum age of the set.
      */
-    ctrl.getMaxAgeAccepted = function(ageConstants){
+    controller.getMaxAgeAccepted = function(ageConstants){
       return getAgeRangeFromAgeConstants(ageConstants).maximumAge;
     };
 
@@ -82,7 +82,7 @@ angular.module('mdhs').component('facilityListing', {
      * @param {String} licenseConstant The enum representation of the license type.
      * @returns {String} The human-friendly representation of the license type.
      */
-    ctrl.getLicense = function(licenseConstant){
+    controller.getLicense = function(licenseConstant){
       return licenseType[licenseConstant];
     };
 

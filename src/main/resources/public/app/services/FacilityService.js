@@ -1,5 +1,4 @@
 angular.module('mdhs').service('FacilityService', function ($http, $q) {
-
   var service = this;
 
   service.currentFacilities = [];
