@@ -13,7 +13,7 @@ angular.module('mdhs').service('FacilitySortService', function ($http, $q) {
   };
 
   var filterSettings = {
-    hasSlots: true,
+    hasSlots: false,
     hasNoHistory: false,
     hasLicense: false
   };

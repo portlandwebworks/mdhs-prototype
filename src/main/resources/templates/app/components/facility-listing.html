@@ -1,5 +1,5 @@
 <div class="facility-listing">
-  <div class="facility-listing__item" ng-repeat="facility in $ctrl.facilities">
+  <div class="facility-listing__item" ng-repeat="facility in $ctrl.facilities | orderBy:$ctrl.facilitySorter:$ctrl.reverseBySortType() | filter:$ctrl.slotsFilter | filter:$ctrl.noHistoryFilter | filter:$ctrl.licenseFilter">
     <div class="facility-listing__header">
 
       <div class="facility-listing__row">
