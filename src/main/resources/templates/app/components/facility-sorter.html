@@ -1,3 +1,26 @@
 <div class="facility-sorter">
-
+  <div class="facility-sorter__sort">
+    <label class="facility-sorter__sort-label">Sort by</label>
+    <select class="facility-sorter__sort-select" ng-model="$ctrl.sortSettings.sortBy">
+      <option ng-repeat="(sortOrderKey, sortOrderValue) in $ctrl.sortOrders" value="{{sortOrderValue}}">{{ $ctrl.sortOrderLabels[sortOrderKey] }}</option>
+    </select>
+  </div>
+  <div class="facility-sorter__filter">
+    <label class="facility-sorter__filter-label">
+      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasSlots" />
+      <span class="facility-sorter__filter-text">Slots Available</span>
+    </label>
+  </div>
+  <div class="facility-sorter__filter">
+    <label class="facility-sorter__filter-label">
+      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasNoHistory" />
+      <span class="facility-sorter__filter-text">Without History</span>
+    </label>
+  </div>
+  <div class="facility-sorter__filter">
+    <label class="facility-sorter__filter-label">
+      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasLicense" />
+      <span class="facility-sorter__filter-text">Licensed</span>
+    </label>
+  </div>
 </div>
