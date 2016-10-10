@@ -1,12 +1,50 @@
 .home {
+  position: relative;
+}
+
+.home__banner{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-bottom: 56.25%
+}
+
+.home__content{
+  @media screen and (min-width: $screen-sm) {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.home__container{
   @extend .container;
 
   top: 100px;
-  @media(min-width: $screen-md){
+  @media(min-width: $screen-lg){
     margin-bottom:60px;
   }
 }
 
-.home__summary{
+.home__row{
   @extend .row;
+}
+
+.home__text {
+  @extend .col-md-6;
+  @extend .col-md-offset-6;
+  @extend .col-lg-4;
+  @extend .col-lg-offset-7;
+
+  background: rgba($blue-3, 0.9);
+  padding: 140px 75px;
+}
+
+.home__greeting{
+  color: black;
+  font-size: 4 * $font-size-base;
+}
+
+.home__message{
+  color: white;
 }

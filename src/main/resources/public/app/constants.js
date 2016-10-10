@@ -29,4 +29,7 @@ angular.module('mdhs')
   .constant('licenseType', {
     LICENSED: 'Licensed',
     UNLICENSED: 'Unlicensed'
-  });
+  })
+  // In an ideal world, these would belong to a translations file.
+  .constant('homeGreeting', 'Welcome')
+  .constant('homeMessage', 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Cras ultricies ligula sed magna dictum porta. Pellentesque in ipsum id orci porta dapibus. Curabitur aliquet quam id dui posuere blandit. Quisque velit nisi, pretium ut lacinia in, elementum id enim.');

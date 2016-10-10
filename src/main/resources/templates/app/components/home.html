@@ -1,6 +1,21 @@
 <div class="home">
-  <div class="home__site-banner"></div>
-  <div class="home__summary">
-	  {{$ctrl.message}}
+  <div class="home__banner" style="background-image: url({{$ctrl.image}})"></div>
+  <div class="home__content">
+
+    <div class="home__container">
+      <div class="home__row">
+
+        <div class="home__text">
+          <div class="home__greeting">
+            {{$ctrl.greeting}}
+          </div>
+          <div class="home__message">
+            {{$ctrl.message}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
