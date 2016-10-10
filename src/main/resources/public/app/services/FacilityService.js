@@ -3,16 +3,6 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
 
   var currentFacilities = [];
 
-  var sortSettings = {
-    sortBy: ''
-  };
-
-  var filterSettings = {
-    hasSlots: true,
-    hasNoHistory: false,
-    hasLicense: false
-  };
-
   service.find = function (criteria) {
     return $http.get('/api/facilities', {params: criteria}).then(function (response) {
 
@@ -31,14 +21,6 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
 
   service.getCurrentFacilities = function () {
     return currentFacilities;
-  };
-
-  service.getSortSettings = function(){
-    return sortSettings;
-  };
-
-  service.getFilterSettings = function(){
-    return filterSettings;
   };
 
 });
