@@ -1,28 +1,24 @@
 .site-footer__top {
   @extend .row;
-
-  height:25px;
-  margin-top: 40px;
 }
 
 .site-footer__top-green {
   @extend .col-xs-4;
-  height: 100%;
+  height:25px;
   background-color: $green-1;
 }
 
 .site-footer__top-gray {
   @extend .col-xs-4;
-  height: 100%;
+  height:25px;
   background-color: $gray-2;
 }
 
 .site-footer__top-blue {
   @extend .col-xs-4;
-  height: 100%;
+  height:25px;
   background-color: $blue-5;
 }
-
 
 .site-footer__container{
   @extend .container;
