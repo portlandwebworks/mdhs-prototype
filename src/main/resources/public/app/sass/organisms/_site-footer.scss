@@ -1,4 +1,8 @@
-.site-footer__top {
+.site-footer__top{
+  @extend .container-fluid;
+}
+
+.site-footer__top-row{
   @extend .row;
 }
 
