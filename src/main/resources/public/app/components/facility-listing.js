@@ -2,7 +2,7 @@
 
 angular.module('mdhs').component('facilityListing', {
   templateUrl: '/templates/app/components/facility-listing',
-  controller: function (allowedGender, ageRange, licenseType, FacilityService, FacilitySortService) {
+  controller: function (FacilityService, FacilitySortService) {
     var controller = this;
 
     var sortSettings = FacilitySortService.getSortSettings();
@@ -10,6 +10,12 @@ angular.module('mdhs').component('facilityListing', {
     var filterSettings = FacilitySortService.getFilterSettings();
 
     var sortOrders = FacilitySortService.getSortOrders();
+
+    var allowedGender = FacilityService.getAllowedGenders();
+
+    var ageRanges = FacilityService.getAgeRanges();
+
+    var licenseTypes = FacilityService.getLicenseTypes();
 
     controller.facilities = FacilityService.getCurrentFacilities();
 
@@ -20,9 +26,9 @@ angular.module('mdhs').component('facilityListing', {
      * @param {string} ageConstants An array of age range enums.
      * @returns {Object} An object with the smallest and largest ages in the set.
      */
-    function getAgeRangeFromAgeConstants(ageConstants){
+    function getageRangesFromAgeConstants(ageConstants){
       return ageConstants.map(function(ageConstant){
-        return ageRange[ageConstant];
+        return ageRanges[ageConstant];
       }).reduce(function(carry, ages){
         return {
           minimumAge: Math.min(carry.minimumAge, ages.minimumAge),
@@ -57,8 +63,12 @@ angular.module('mdhs').component('facilityListing', {
      * @param {String} genderConstant The enum representation of the gender accepted.
      * @returns {String} The human-friendly representation of the gender accepted.
      */
-    controller.getGendersAccepted = function(genderConstant){
-      return allowedGender[genderConstant];
+    controller.getGendersAcceptedLabel = function(genderConstant){
+      return ({
+        'FEMALE': 'Girls',
+        'MALE': 'Boys',
+        'BOTH': 'Girls, Boys'
+      })[genderConstant];
     };
 
     /**
@@ -68,7 +78,7 @@ angular.module('mdhs').component('facilityListing', {
      * @returns {number} The minimum age of the set.
      */
     controller.getMinAgeAccepted = function(ageConstants){
-      return getAgeRangeFromAgeConstants(ageConstants).minimumAge;
+      return getageRangesFromAgeConstants(ageConstants).minimumAge;
     };
 
     /**
@@ -78,7 +88,7 @@ angular.module('mdhs').component('facilityListing', {
      * @returns {number} The maximum age of the set.
      */
     controller.getMaxAgeAccepted = function(ageConstants){
-      return getAgeRangeFromAgeConstants(ageConstants).maximumAge;
+      return getageRangesFromAgeConstants(ageConstants).maximumAge;
     };
 
     /**
@@ -87,8 +97,11 @@ angular.module('mdhs').component('facilityListing', {
      * @param {String} licenseConstant The enum representation of the license type.
      * @returns {String} The human-friendly representation of the license type.
      */
-    controller.getLicense = function(licenseConstant){
-      return licenseType[licenseConstant];
+    controller.getLicenseLabel = function(licenseConstant){
+      return ({
+        LICENSED: 'Licensed',
+        UNLICENSED: 'Unlicensed'
+      })[licenseConstant];
     };
 
     /**
@@ -166,7 +179,7 @@ angular.module('mdhs').component('facilityListing', {
      */
     controller.licenseFilter = function(facility){
       var licenseFilterOff = !filterSettings.hasLicense;
-      var facilityHasLicense = facility.facility.licenseType === 'LICENSED';
+      var facilityHasLicense = facility.facility.licenseTypes === licenseTypes.LICENSED;
       return licenseFilterOff || facilityHasLicense;
     };
 

@@ -23,4 +23,44 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
     return currentFacilities;
   };
 
+  service.getAllowedGenders = function(){
+    return {
+      MALE: 'MALE',
+      FEMALE: 'FEMALE',
+      BOTH: 'BOTH'
+    };
+  };
+
+  service.getAgeRanges = function(){
+    return {
+      INFANT: {
+        minimumAge: 0,
+        maximumAge: 2
+      },
+      TODDLER: {
+        minimumAge: 3,
+        maximumAge: 6
+      },
+      CHILD: {
+        minimumAge: 7,
+        maximumAge: 10
+      },
+      PRETEEN: {
+        minimumAge: 11,
+        maximumAge: 14
+      },
+      TEEN: {
+        minimumAge: 15,
+        maximumAge: 18
+      }
+    };
+  };
+
+  service.getLicenseTypes = function(){
+    return {
+      LICENSED: 'LICENSED',
+      UNLICENSED: 'LICENSED'
+    };
+  }
+
 });
