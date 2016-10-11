@@ -11,7 +11,10 @@ angular.module('mdhs').component('facilityMap', {
         latitude: 32.611462,
         longitude: -89.834235
       },
-      zoom: 7
+      zoom: 7,
+      options: {
+        scrollwheel: false
+      }
     };
 
     //Set the default zoom and center of the map
@@ -51,6 +54,6 @@ angular.module('mdhs').component('facilityMap', {
     controller.map.events = {
       click: controller.mapClick
     };
-    
+
   }
 });
