@@ -11,14 +11,22 @@
         <div class="facility-detail-small__history" ng-if="$ctrl.facility.facility.acceptsConvictions">History on Record</div>
       </div>
     </div>
-    <div class="facility-detail-small__distance">{{$ctrl.facility.distance}} mi</div>
-    <div class="facility-detail-small__action">Call</div>
+    <div class="facility-detail-small__distance">
+      <span class="facility-detail-small__distance-value">{{$ctrl.facility.distance}} mi</span>
+    </div>
+    <div class="facility-detail-small__action">
+      <button class="facility-detail-small__action-button">Call</button>
+    </div>
   </div>
 
   <div class="facility-detail-small__detail">
     <div class="facility-detail-small__info">
-      <div class="facility-detail-small__license facility-detail-small__license--licensed" ng-if="$ctrl.isLicensed($ctrl.facility.facility.licenseType)">Licensed</div>
-      <div class="facility-detail-small__license facility-detail-small__license--unlicensed" ng-if="$ctrl.isUnlicensed($ctrl.facility.facility.licenseType)">Unlicensed</div>
+      <div class="facility-detail-small__license facility-detail-small__license--licensed" ng-if="$ctrl.isLicensed($ctrl.facility.facility.licenseType)">
+        <span class="glyphicon glyphicon-ok"></span> Licensed
+      </div>
+      <div class="facility-detail-small__license facility-detail-small__license--unlicensed" ng-if="$ctrl.isUnlicensed($ctrl.facility.facility.licenseType)">
+        <span class="glyphicon glyphicon-remove"></span> Unlicensed
+      </div>
       <div class="facility-detail-small__info-line">
         <div class="facility-detail-small__address-line facility-detail-small__address-line--1"></div>
         <div class="facility-detail-small__address-line facility-detail-small__address-line--2">{{$ctrl.facility.facility.city}} MS {{$ctrl.facility.facility.zipCode}}</div>
