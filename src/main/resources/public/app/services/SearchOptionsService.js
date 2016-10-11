@@ -51,4 +51,12 @@ angular.module('mdhs').service('SearchOptionsService', function searchOptionsFac
       { value: 5, label: '15-18 years'},
     ]
   };
+
+  service.getFacilitySizes = function() {
+    return [
+      { value: 1, label: 'Small (0-15 Children)'},
+      { value: 2, label: 'Medium (16-50 Children)'},
+      { value: 3, label: 'Large (51+ Children)'},
+    ]
+  }
 });
