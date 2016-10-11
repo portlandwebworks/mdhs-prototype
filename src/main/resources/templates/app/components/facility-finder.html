@@ -25,16 +25,13 @@
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.facilityType">
             <option selected="true" value="">Facility Type</option>
-            <option ng-repeat="type in facilityTypes" value="{{type.value}}">{{type.label}}</option>
+            <option ng-repeat="type in $ctrl.facilityTypes" value="{{type.value}}">{{type.label}}</option>
           </select>
         </div>
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.size">
-            <option selected="true" value="">Size</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option selected="true" value="">Facility Size</option>
+            <option ng-repeat="size in $ctrl.facilitySizes" value="{{size.value}}">{{size.label}}</option>
           </select>
         </div>
 
