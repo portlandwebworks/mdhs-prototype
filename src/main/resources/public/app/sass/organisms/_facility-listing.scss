@@ -18,3 +18,9 @@
     display: block;
   }
 }
+
+.facility-listing__no-results{
+  @extend .alert;
+  @extend .alert-info;
+  @extend .text-center;
+}

@@ -1,0 +1,108 @@
+.facility-detail-small{
+
+}
+
+.facility-detail-small__header{
+  @extend .clearfix;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: $gray-5;
+}
+
+.facility-detail-small__title{
+  @extend .col-xs-6;
+}
+
+.facility-detail-small__name{
+  font-weight: bold;
+  font-size: 0.8889 * $font-size-base;
+}
+
+
+.facility-detail-small__sub-title{}
+
+.facility-detail-small__rating{
+  display: inline;
+  // prevents stars from wrapping
+  white-space: nowrap;
+}
+
+.facility-detail-small__not-rated{
+  font-size: 0.6667 * $font-size-base;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.facility-detail-small__star{
+  display: inline-block;
+  width: 14px;
+  height: 13px;
+  background-image: url(/app/assets/facility-detail-large/star.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
+
+.facility-detail-small__history{
+  @extend .label;
+  @extend .label-warning;
+  font-size: 0.6667 * $font-size-base;
+}
+
+.facility-detail-small__distance{
+  @extend .col-xs-3;
+  font-size: 0.7778 * $font-size-base;
+}
+
+.facility-detail-small__action{
+  @extend .col-xs-3;
+  @extend .text-center;
+  background: $blue-4;
+  color: white;
+}
+
+.facility-detail-small__detail{
+  @extend .clearfix;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.facility-detail-small__info{
+  @extend .col-xs-6;
+}
+
+.facility-detail-small__license{
+  @extend .label;
+  font-size: 0.6667 * $font-size-base;
+}
+
+.facility-detail-small__license--licensed{
+  @extend .label-success;
+  font-size: 0.6667 * $font-size-base;
+}
+
+.facility-detail-small__license--unlicensed{
+  @extend .label-warning;
+}
+
+.facility-detail-small__info-line{}
+
+.facility-detail-small__address-line{
+  font-size: 0.7778 * $font-size-base;
+}
+
+.facility-detail-small__label{
+  font-size: 0.7778 * $font-size-base;
+  font-weight: bold;
+  display: inline;
+
+  &:after{
+    content: ':';
+    display: inline;
+  }
+}
+
+.facility-detail-small__data{
+  font-size: 0.7778 * $font-size-base;
+  display: inline;
+}
