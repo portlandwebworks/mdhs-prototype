@@ -17,14 +17,22 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import static org.springframework.util.StringUtils.*;
 
 /**
  *
  * @author nick
  */
-public class FacilityRepositoryImpl implements FacilitiyRepositoryCustom {
+public class FacilityRepositoryImpl implements FacilityRepositoryCustom {
+
+	private final static Logger log = LoggerFactory.getLogger(FacilityRepositoryImpl.class);
 
 	@PersistenceContext
 	private EntityManager em;
@@ -37,50 +45,73 @@ public class FacilityRepositoryImpl implements FacilitiyRepositoryCustom {
 	}
 
 	@Override
-	public List<FacilityResult> findFacilities(FacilityQuery query, Sort sort) {
+	public Page<FacilityResult> findFacilities(FacilityQuery query, Pageable pageInfo) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 
 		CriteriaQuery<Facility> facilityQuery = cb.createQuery(Facility.class);
 		Root<Facility> facilityRoot = facilityQuery.from(Facility.class);
 
-		List<Predicate> preds = new ArrayList<>();
+		final List<Predicate> preds = new ArrayList<>();
 
 		facilityQuery = facilityQuery.where(preds.toArray(new Predicate[]{}));
-		if (sort != null) {
-			final List<Order> orderBys = new ArrayList<>();
-			sort.forEach(order -> {
-				if (order.isAscending()) {
-					orderBys.add(cb.asc(facilityRoot.get(order.getProperty())));
-				} else {
-					orderBys.add(cb.desc(facilityRoot.get(order.getProperty())));
 
+		if (query.getAgeRanges() != null && !query.getAgeRanges().isEmpty()) {
+			query.getAgeRanges().stream().forEach(ar -> {
+				preds.add(cb.isMember(ar, facilityRoot.get("openToAgeRange")));
+			});
+		}
+
+		if (query.getGenders() != null && !query.getGenders().isEmpty()) {
+			preds.add(facilityRoot.get("openToGender").in(query.getGenders()));
+		}
+
+		Sort.Direction distanceDirection = null;
+		if (pageInfo.getSort() != null) {
+			final List<Order> orderBys = new ArrayList<>();
+			if (pageInfo.getSort().getOrderFor("withinDistance") != null) {
+				distanceDirection = pageInfo.getSort().getOrderFor("withinDistance").getDirection();
+			}
+			pageInfo.getSort().forEach(order -> {
+				//distance handled seperately down below outside of query.
+				if (!order.getProperty().equals("withinDistance")) {
+					if (order.isAscending()) {
+						orderBys.add(cb.asc(facilityRoot.get(order.getProperty())));
+					} else {
+						orderBys.add(cb.desc(facilityRoot.get(order.getProperty())));
+
+					}
 				}
 			});
 			facilityQuery = facilityQuery.orderBy(orderBys);
 		}
 
-		List<Facility> facilities = em.createQuery(facilityQuery)
-				.setMaxResults(100) //temp setting, will remove once we get more UI stuff in place
+		/**
+		 * Ideally this would do the paging at the database level, but because
+		 * we need to be able to calculate distances (and are not using
+		 * something like PostGIS), taking care of it manually. Not suitable for
+		 * long term usage.
+		 */
+		List<Facility> facilities = em.createQuery(facilityQuery.where(preds.toArray(new Predicate[]{})))
 				.getResultList();
 
-		
 		final Optional<String> zipForCity;
-		if (query.getCity() != null) {
+		if (!isEmpty(query.getCity())) {
 			zipForCity = rangeFinder.zipForKnownCity(query.getCity());
 		} else {
 			zipForCity = Optional.empty();
 		}
 
+		List<FacilityResult> allResults;
 		if (zipForCity.isPresent()) {
-			Stream<FacilityResult> results = facilities.stream().map(f -> {
-				FacilityResult result = new FacilityResult(rangeFinder.distance(zipForCity.get(), f.getZipCode()).getDistanceInMiles(), f);
-				return result;
-			});
-			results = results.sorted((fr1, fr2) -> fr1.getDistance().compareTo(fr2.getDistance()));
-			return results.collect(Collectors.toList());
+			allResults = calcAndSortDistances(zipForCity, facilities, distanceDirection, query);
 		} else {
-			return facilities.stream().map(f -> new FacilityResult(BigDecimal.ZERO, f)).collect(Collectors.toList());
+			allResults = facilities.stream().map(f -> new FacilityResult(null, f)).collect(Collectors.toList());
 		}
+
+		List<FacilityResult> paged = allResults.subList(pageInfo.getOffset(), getEndingIndex(allResults, pageInfo));
+		final Page<FacilityResult> page = new PageImpl<>(paged, pageInfo, allResults.size());
+		log.debug("Found {} total facilities. Returning page {} of {}.", allResults.size(), pageInfo.getPageNumber(), page.getTotalPages());
+		return page;
 	}
 
 	@Override
@@ -91,6 +122,41 @@ public class FacilityRepositoryImpl implements FacilitiyRepositoryCustom {
 				.stream()
 				.map(o -> o[0] + "," + o[1])
 				.collect(Collectors.joining("\n"));
+	}
+
+	private List<FacilityResult> calcAndSortDistances(final Optional<String> zipForCity, List<Facility> facilities, Sort.Direction distanceDirection, FacilityQuery query) {
+		log.debug("Found zip code {}, adding distance to results.", zipForCity.get());
+		Stream<FacilityResult> results = facilities.stream().map(f -> {
+			FacilityResult result = new FacilityResult(rangeFinder.distance(zipForCity.get(), f.getZipCode()).getDistanceInMiles(), f);
+			return result;
+		});
+		if (query.getWithinDistance() != null) {
+			results = results.filter(fr -> fr.getDistance().compareTo(new BigDecimal(query.getWithinDistance())) <= 0);
+		}
+		if (distanceDirection != null) {
+			switch (distanceDirection) {
+				case ASC:
+					results = results.sorted((fr1, fr2) -> fr1.getDistance().compareTo(fr2.getDistance()));
+					break;
+				default:
+					results = results.sorted((fr1, fr2) -> fr2.getDistance().compareTo(fr1.getDistance()));
+			}
+		}
+		return results.collect(Collectors.toList());
+	}
+
+	private int getEndingIndex(List<FacilityResult> allResults, Pageable pageInfo) {
+		int finalIndex = 0;
+		if (!allResults.isEmpty()) {
+			int calcIndex = pageInfo.getOffset() + pageInfo.getPageSize();
+			if (calcIndex <= allResults.size()) {
+				finalIndex = calcIndex;
+			} else {
+				finalIndex = allResults.size();
+			}
+		}
+		log.debug("Calculated final index of: {}", finalIndex);
+		return finalIndex;
 	}
 
 }

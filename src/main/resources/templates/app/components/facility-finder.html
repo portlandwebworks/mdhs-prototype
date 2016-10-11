@@ -59,9 +59,8 @@
             </select>
           </div>
           <div class="col-sm-3">
-            <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="child.age">
+            <select class="form-control facility-finder__form-control facility-finder__filter" ng-options="age.value as age.label for age in $ctrl.ages" ng-model="child.age">
               <option selected="true" value="">Age</option>
-              <option ng-repeat="age in $ctrl.ages" value="{{age.value}}">{{age.label}}</option>
             </select>
           </div>
         </div>

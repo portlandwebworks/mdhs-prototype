@@ -36,20 +36,20 @@ angular.module('mdhs').service('SearchOptionsService', function searchOptionsFac
 
   service.getGenders = function(){
     return [
-      { value: 3, label: 'Both'},
-      { value: 1, label: 'Boy'},
-      { value: 2, label: 'Girl'}
-    ]
+      { value: 'BOTH', label: 'Both'},
+      { value: 'MALE', label: 'Boy'},
+      { value: 'FEMALE', label: 'Girl'}
+    ];
   };
 
   service.getAges = function(){
     return [
-      { value: 1, label: '0-2 years'},
-      { value: 2, label: '3-6 years'},
-      { value: 3, label: '6-10 years'},
-      { value: 4, label: '11-14 years'},
-      { value: 5, label: '15-18 years'},
-    ]
+      { value: 'INFANT', label: '0-2 years'},
+      { value: 'TODDLER', label: '3-6 years'},
+      { value: 'CHILD', label: '6-10 years'},
+      { value: 'PRETEEN', label: '11-14 years'},
+      { value: 'TEEN', label: '15-18 years'},
+    ];
   };
 
   service.getFacilitySizes = function() {

@@ -5,8 +5,8 @@ angular.module('mdhs').component('facilityFinder', {
   controller: function (SearchOptionsService, FacilityService) {
     var controller = this;
 
-    SearchOptionsService.getCities().then(function(cities){ controller.cities = cities });
-    SearchOptionsService.getCounties().then(function(counties){ controller.counties = counties });
+    SearchOptionsService.getCities().then(function(cities){ controller.cities = cities; });
+    SearchOptionsService.getCounties().then(function(counties){ controller.counties = counties; });
     controller.facilityTypes = SearchOptionsService.getProviderTypes();
     controller.genders = SearchOptionsService.getGenders();
     controller.ages = SearchOptionsService.getAges();
@@ -19,37 +19,38 @@ angular.module('mdhs').component('facilityFinder', {
     ];
 
     controller.search = function(){
+      var criteria = angular.copy(controller.facilityFilters);
+	  criteria.genders = [];
+	  criteria.ageRanges = [];
       _.forEach(controller.childInfo, function(child){
-        if(!_.includes(controller.facilityFilters.genders,child.gender)){
-          controller.facilityFilters.genders.push(child.gender);
+        if(child.gender !== null){
+          criteria.genders.push(child.gender);
         }
-        if(!_.includes(controller.facilityFilters.ages,child.age)){
-          controller.facilityFilters.ages.push(child.age);
+        if(child.age !== null){
+          criteria.ageRanges.push(child.age);
         }
       });
 
-      FacilityService.find(controller.facilityFilters)
+      FacilityService.find(criteria)
         .then(function(){
 
         },function(){
 
-        })
+        });
     };
 
     controller.reset = function(){
       initializeFilters();
       controller.childInfo = [{ gender: null, age: null }];
-    }
+    };
 
     controller.addChild = function(){
       controller.childInfo.push({ gender: null, age: null });
-    }
+    };
 
     function initializeFilters(){
       controller.facilityFilters = {
-        withinDistance: '10',
-        genders: [],
-        ages: []
+        withinDistance: '10'
       };
     }
   }

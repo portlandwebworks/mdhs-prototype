@@ -33,7 +33,7 @@ angular.module('mdhs').component('facilityListing', {
         return {
           minimumAge: Math.min(carry.minimumAge, ages.minimumAge),
           maximumAge: Math.max(carry.maximumAge, ages.maximumAge)
-        }
+        };
       });
     }
 

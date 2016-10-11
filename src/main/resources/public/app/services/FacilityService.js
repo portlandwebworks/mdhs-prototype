@@ -10,7 +10,7 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
       currentFacilities.length = 0;
       Array.prototype.push.apply(currentFacilities, response.data);
 
-      return $q.resolve(response);
+      return $q.resolve(response.data);
     }, function (response) {
 
       currentFacilities.length = 0;
