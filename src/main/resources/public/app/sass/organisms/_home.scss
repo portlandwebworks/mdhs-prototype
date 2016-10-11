@@ -25,7 +25,7 @@
 }
 
 .home__text {
-  @extend .col-xs-12;
+  @extend .col-sm-6;
   padding-bottom: $grid-gutter-width / 2;
 
   @media screen and (min-width: $screen-sm) {
@@ -55,9 +55,19 @@
 .home__button{
   @extend .btn;
   @extend .btn-primary;
+  @extend .btn-lg;
   display: block;
+  border-radius: 30px;
+  border-color: white;
+  background-color: $blue-1;
+
+  &:hover{
+    border-color: white;
+    background-color: darken($blue-1, 20%);
+  }
 
   @media screen and (min-width: $screen-sm) {
     display: inline-block;
+    padding: 10px 30px;
   }
 }
