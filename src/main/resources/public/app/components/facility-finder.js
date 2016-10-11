@@ -10,6 +10,7 @@ angular.module('mdhs').component('facilityFinder', {
     controller.facilityTypes = SearchOptionsService.getProviderTypes();
     controller.genders = SearchOptionsService.getGenders();
     controller.ages = SearchOptionsService.getAges();
+    controller.facilitySizes = SearchOptionsService.getFacilitySizes();
 
    initializeFilters();
 
