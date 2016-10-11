@@ -26,7 +26,7 @@ angular.module('mdhs').component('facilityMap', {
     //Initialize a gmap variable to communicate with the google map instance
     var gMap;
 
-    //Add
+    //Add function to zoom to all facilities on the map
     var zoomToFacilities = function (facilities) {
       if (gMap && facilities && facilities.length > 0) {
         var bounds = new google.maps.LatLngBounds();
