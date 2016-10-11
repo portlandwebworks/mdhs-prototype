@@ -1,72 +1,14 @@
 <div class="facility-listing">
   <div class="facility-listing__item" ng-repeat="facility in $ctrl.facilities | orderBy:$ctrl.facilitySorter:$ctrl.reverseBySortType() | filter:$ctrl.slotsFilter | filter:$ctrl.noHistoryFilter | filter:$ctrl.licenseFilter">
-    <div class="facility-listing__header">
-
-      <div class="facility-listing__row">
-
-        <div class="facility-listing__name">{{facility.facility.name}}</div>
-        <div class="facility-listing__rating">
-          <span ng-if="facility.facility.qualityRating == 0" class="facility-listing__not-rated">Not Yet Rated</span>
-          <span ng-if="facility.facility.qualityRating != 0" ng-repeat="i in $ctrl.range(facility.facility.qualityRating) track by $index" class="facility-listing__star"></span>
-        </div>
-        <div class="facility-listing__distance">
-          <span class="facility-listing__distance-value">{{facility.distance}} mi</span>
-          <span class="facility-listing__distance-modifier">Away</span>
-        </div>
-
-      </div>
-
+    <!--
+      There's no sense fighting against what the markup can and can't do. So
+      we use different components for small and large screens.
+    -->
+    <div class="facility-listing__small">
+      <facility-detail-small facility="facility"></facility-detail-small>
     </div>
-    <div class="facility-listing__content">
-
-      <div class="facility-listing__row">
-
-        <div class="facility-listing__address">
-          <div class="facility-listing__address-line-1"></div>
-          <div class="facility-listing__address-line-2">{{facility.facility.city}} MS {{facility.facility.zipCode}}</div>
-          <div class="facility-listing__address-line-3">{{facility.facility.phoneNumber}}</div>
-        </div>
-
-        <div class="facility-listing__info">
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">Type</label>
-            <span class="facility-listing__data">{{facility.facility.description}}</span>
-          </div>
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">Accepts</label>
-            <span class="facility-listing__data">{{ $ctrl.getGendersAcceptedLabel(facility.facility.openToGender) }}</span>
-          </div>
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">Ages</label>
-            <span class="facility-listing__data">{{ $ctrl.getMinAgeAccepted(facility.facility.openToAgeRange) }} - {{ $ctrl.getMaxAgeAccepted(facility.facility.openToAgeRange) }}</span>
-          </div>
-        </div>
-
-        <div class="facility-listing__info">
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">Size</label>
-            <span class="facility-listing__data">{{facility.facility.capacity}} Children</span>
-          </div>
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">Slots Available</label>
-            <span class="facility-listing__data">{{facility.facility.openings}}</span>
-          </div>
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">License</label>
-            <span class="facility-listing__data">{{ $ctrl.getLicenseLabel(facility.facility.licenseType) }}</span>
-          </div>
-          <div class="facility-listing__info-line">
-            <label class="facility-listing__label">Accepts Convictions</label>
-            <span class="facility-listing__data">{{ facility.facility.acceptsConvictions ? 'Yes' : 'No' }}</span>
-          </div>
-        </div>
-
-        <div class="facility-listing__action">
-          <button class="facility-listing__action-button" type="button" ng-click="$ctrl.contactFacility(facility.facility.id)">Call</button>
-        </div>
-
-      </div>
-
+    <div class="facility-listing__large">
+      <facility-detail-large facility="facility"></facility-detail-large>
     </div>
   </div>
 </div>

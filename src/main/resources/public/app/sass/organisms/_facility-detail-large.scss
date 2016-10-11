@@ -1,0 +1,132 @@
+
+.facility-detail-large__row{
+  // Bootstrap columns need to be row'ed since we want its contents to be snug
+  // to the edge of the content, while maintaining gutter from the edges.
+  @extend .row;
+}
+
+.facility-detail-large__header{
+  background: $gray-7;
+  padding: 15px 50px 15px 60px;
+}
+
+.facility-detail-large__name{
+  @extend .col-sm-3;
+  @extend .col-lg-4;
+  color: $blue-3;
+  font-weight: bold;
+  position: relative;
+
+  &:before{
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 8px;
+    background-image: url(/app/assets/facility-detail-large/arrow-down.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    position: absolute;
+    left: -25px;
+    top: 9px;
+  }
+}
+
+.facility-detail-large__rating{
+  @extend .col-sm-3;
+}
+
+.facility-detail-large__not-rated{
+  font-weight: bold;
+
+  &:after{
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url(/app/assets/facility-detail-large/not-yet-rated.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    position: relative;
+    top: 2px;
+    left: 5px;
+  }
+}
+
+.facility-detail-large__star{
+  display: inline-block;
+  width: 18px;
+  height: 17px;
+  background-image: url(/app/assets/facility-detail-large/star.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
+
+.facility-detail-large__distance{
+  @extend .col-sm-3;
+}
+
+.facility-detail-large__distance-value{
+  font-weight: bold;
+}
+
+.facility-detail-large__distance-modifier{
+
+}
+
+.facility-detail-large__content{
+  padding: 15px 50px 15px 60px;
+}
+
+.facility-detail-large__address{
+  @extend .col-sm-3;
+  @extend .col-lg-4;
+}
+
+.facility-detail-large__address-line-1{}
+
+.facility-detail-large__address-line-2{}
+
+.facility-detail-large__address-line-3{}
+
+.facility-detail-large__info{
+  @extend .col-sm-3;
+}
+
+.facility-detail-large__info-line{
+
+}
+
+.facility-detail-large__label{
+  &:after{
+    content: ':';
+  }
+}
+
+.facility-detail-large__data{}
+
+.facility-detail-large__action{
+  @extend .col-sm-3;
+  @extend .col-lg-2;
+  @extend .text-center;
+}
+
+.facility-detail-large__action-button{
+  @extend .btn;
+
+  background: $blue-4;
+  color: white;
+  text-transform: uppercase;
+  // Keep the radius even when font-size scales
+  font-size: $font-size-base;
+  line-height: $font-size-base;
+  border-radius: $font-size-base;
+  padding: 9px 60px;
+
+  &:hover {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
+}

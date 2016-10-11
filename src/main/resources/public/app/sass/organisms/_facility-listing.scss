@@ -2,134 +2,19 @@
 
 .facility-listing__item{}
 
-.facility-listing__row{
-  // Bootstrap columns need to be row'ed since we want its contents to be snug
-  // to the edge of the content, while maintaining gutter from the edges.
-  @extend .row;
-}
+// We want the detail components to be used independently, so we let the listing
+// manage visibility instead of the detail components.
 
-.facility-listing__header{
-  background: $gray-7;
-  padding: 15px 50px 15px 60px;
-}
-
-.facility-listing__name{
-  @extend .col-sm-3;
-  @extend .col-lg-4;
-  color: $blue-3;
-  font-weight: bold;
-  position: relative;
-
-  &:before{
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 8px;
-    background-image: url(/app/assets/facility-listing/arrow-down.png);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
-    position: absolute;
-    left: -25px;
-    top: 9px;
+.facility-listing__small{
+  display: block;
+  @media screen and (min-width: $screen-md) {
+    display: none;
   }
 }
 
-.facility-listing__rating{
-  @extend .col-sm-3;
-}
-
-.facility-listing__not-rated{
-  font-weight: bold;
-
-  &:after{
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-image: url(/app/assets/facility-listing/not-yet-rated.png);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
-    position: relative;
-    top: 2px;
-    left: 5px;
-  }
-}
-
-.facility-listing__star{
-  display: inline-block;
-  width: 18px;
-  height: 17px;
-  background-image: url(/app/assets/facility-listing/star.png);
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-size: cover;
-}
-
-.facility-listing__distance{
-  @extend .col-sm-3;
-}
-
-.facility-listing__distance-value{
-  font-weight: bold;
-}
-
-.facility-listing__distance-modifier{
-
-}
-
-.facility-listing__content{
-  padding: 15px 50px 15px 60px;
-}
-
-.facility-listing__address{
-  @extend .col-sm-3;
-  @extend .col-lg-4;
-}
-
-.facility-listing__address-line-1{}
-
-.facility-listing__address-line-2{}
-
-.facility-listing__address-line-3{}
-
-.facility-listing__info{
-  @extend .col-sm-3;
-}
-
-.facility-listing__info-line{
-
-}
-
-.facility-listing__label{
-  &:after{
-    content: ':';
-  }
-}
-
-.facility-listing__data{}
-
-.facility-listing__action{
-  @extend .col-sm-3;
-  @extend .col-lg-2;
-  @extend .text-center;
-}
-
-.facility-listing__action-button{
-  @extend .btn;
-
-  background: $blue-4;
-  color: white;
-  text-transform: uppercase;
-  // Keep the radius even when font-size scales
-  font-size: $font-size-base;
-  line-height: $font-size-base;
-  border-radius: $font-size-base;
-  padding: 9px 60px;
-
-  &:hover {
-    color: white;
-    background: darken($blue-4, 10%);
+.facility-listing__large{
+  display: none;
+  @media screen and (min-width: $screen-md) {
+    display: block;
   }
 }
