@@ -1,3 +1,54 @@
 .facility-sorter{
+  @extend .clearfix;
   padding: 30px;
+  margin-bottom: 5px;
+  background: $green-1;
+}
+
+.facility-sorter__sort{
+  @extend .pull-left;
+
+  @media screen and (min-width: $screen-sm){
+    padding: 0 10px;
+  }
+
+  @media screen and (min-width: $screen-md ){
+    padding: 0 25px;
+  }
+}
+
+.facility-sorter__sort-label{
+  color: white;
+  line-height: $input-height-base;
+}
+
+.facility-sorter__sort-select{
+  @extend .form-control;
+  display: inline-block;
+  width: auto;
+}
+
+.facility-sorter__filter{
+  @extend .pull-left;
+
+  @media screen and (min-width: $screen-sm){
+    padding: 0 10px;
+  }
+
+  @media screen and (min-width: $screen-md ){
+    padding: 0 25px;
+  }
+}
+
+.facility-sorter__filter-label{
+  color: white;
+  font-weight: normal;
+}
+
+.facility-sorter__filter-toggle{
+
+}
+
+.facility-sorter__filter-text{
+  line-height: $input-height-base;
 }
