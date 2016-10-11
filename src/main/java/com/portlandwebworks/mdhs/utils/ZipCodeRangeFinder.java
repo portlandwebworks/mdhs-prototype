@@ -49,6 +49,10 @@ public class ZipCodeRangeFinder {
 		return knownLocations.stream().filter(loc -> loc.city.equalsIgnoreCase(city)).map(loc -> loc.zipCode).findFirst();
 	}
 
+	public Optional<ZipCodeLocation> zipInfoForCode(String zipCode) {
+		return knownLocations.stream().filter(loc -> loc.zipCode.equals(zipCode)).findFirst();
+	}
+
 	/**
 	 *
 	 * @param fromZip
@@ -97,10 +101,10 @@ public class ZipCodeRangeFinder {
 		public String getZipCode() {
 			return zipCode;
 		}
-		
+
 	}
 
-	private static class ZipCodeLocation {
+	public static class ZipCodeLocation {
 
 		String city;
 		String zipCode;
@@ -112,6 +116,22 @@ public class ZipCodeRangeFinder {
 			this.zipCode = zipCode;
 			this.lat = lat;
 			this.lng = lng;
+		}
+
+		public String getCity() {
+			return city;
+		}
+
+		public String getZipCode() {
+			return zipCode;
+		}
+
+		public BigDecimal getLat() {
+			return lat;
+		}
+
+		public BigDecimal getLng() {
+			return lng;
 		}
 	}
 

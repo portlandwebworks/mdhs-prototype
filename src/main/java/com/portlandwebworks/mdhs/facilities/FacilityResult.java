@@ -8,6 +8,8 @@ import java.math.BigDecimal;
  * @author nick
  */
 public class FacilityResult {
+	private BigDecimal lat;
+	private BigDecimal lng;
 	private BigDecimal distance;
 	private Facility facility;
 
@@ -23,5 +25,20 @@ public class FacilityResult {
 	public Facility getFacility() {
 		return facility;
 	}
-	
+
+	public BigDecimal getLat() {
+		return lat;
+	}
+
+	public void setLat(BigDecimal lat) {
+		this.lat = lat;
+	}
+
+	public BigDecimal getLng() {
+		return lng;
+	}
+
+	public void setLng(BigDecimal lng) {
+		this.lng = lng;
+	}
 }

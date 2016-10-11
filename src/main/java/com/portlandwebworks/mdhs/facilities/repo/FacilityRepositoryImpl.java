@@ -108,7 +108,7 @@ public class FacilityRepositoryImpl implements FacilityRepositoryCustom {
 			allResults = facilities.stream().map(f -> new FacilityResult(null, f)).collect(Collectors.toList());
 		}
 
-		List<FacilityResult> paged = allResults.subList(pageInfo.getOffset(), getEndingIndex(allResults, pageInfo));
+		List<FacilityResult> paged = allResults.subList(pageInfo.getOffset(), getEndingIndex(allResults, pageInfo)).stream().peek(this::addLatLng).collect(Collectors.toList());
 		final Page<FacilityResult> page = new PageImpl<>(paged, pageInfo, allResults.size());
 		log.debug("Found {} total facilities. Returning page {} of {}.", allResults.size(), pageInfo.getPageNumber(), page.getTotalPages());
 		return page;
@@ -159,4 +159,11 @@ public class FacilityRepositoryImpl implements FacilityRepositoryCustom {
 		return finalIndex;
 	}
 
+	public void addLatLng(FacilityResult result) {
+		String zipCode = result.getFacility().getZipCode();
+		rangeFinder.zipInfoForCode(zipCode).ifPresent(info -> {
+			result.setLat(info.getLat());
+			result.setLng(info.getLng());
+		});
+	}
 }

@@ -76,7 +76,7 @@ public class FacilityResources {
 			pageRequest = new PageRequest(page, DEFAULT_PAGE_SIZE);
 		} else {
 			//If we have a city param, and no sort, default to distance sort.
-			pageRequest = new PageRequest(page, DEFAULT_PAGE_SIZE, new Sort(Sort.Direction.ASC, "withinDistnace"));
+			pageRequest = new PageRequest(page, DEFAULT_PAGE_SIZE, new Sort(Sort.Direction.ASC, "withinDistance"));
 
 		}
 		Page<FacilityResult> facilities = repo.findFacilities(facilityQuery, pageRequest);
