@@ -1,13 +1,25 @@
 .search__header {
-  padding: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   color: white;
-  margin: 20px 0;
   background: $blue-1;
+  text-align: center;
+
+  @media screen and (min-width: $screen-sm) {
+    margin: 20px 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: left;
+  }
 }
 
 .search__header-text {
   @extend .container;
-  font-size: 3rem;
+  font-size: 1.125 * $font-size-base;
+
+  @media screen and (min-width: $screen-sm) {
+    font-size: 2 * $font-size-base;
+  }
 }
 
 .search__sub-title-text {
@@ -18,7 +30,9 @@
 
 .search__body {
   @extend .container;
-  margin-top: 50px;
+  @media screen and (min-width: $screen-sm) {
+    margin-top: 50px;
+  }
 }
 
 .search__map{
