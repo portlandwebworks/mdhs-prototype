@@ -5,22 +5,28 @@
       <option ng-repeat="(sortOrderKey, sortOrderValue) in $ctrl.sortOrders" value="{{sortOrderValue}}">{{ $ctrl.sortOrderLabels[sortOrderKey] }}</option>
     </select>
   </div>
-  <div class="facility-sorter__filter">
-    <label class="facility-sorter__filter-label">
-      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasSlots" />
-      <span class="facility-sorter__filter-text">Slots Available</span>
-    </label>
-  </div>
-  <div class="facility-sorter__filter">
-    <label class="facility-sorter__filter-label">
-      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasNoHistory" />
-      <span class="facility-sorter__filter-text">Without History</span>
-    </label>
-  </div>
-  <div class="facility-sorter__filter">
-    <label class="facility-sorter__filter-label">
-      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasLicense" />
-      <span class="facility-sorter__filter-text">Licensed</span>
-    </label>
+  <a href="#" class="facility-sorter__filter-collapse" ng-click="$ctrl.toggleFilters(); $event.preventDefault()">
+    <span class="glyphicon glyphicon-filter"></span>
+    <span class="facility-sorter__filter-collapse-text">Search Filters</span>
+  </a>
+  <div class="facility-sorter__filters" ng-class="{ 'facility-sorter__filters--open': $ctrl.filterSettings.isFiltersOpen }">
+    <div class="facility-sorter__filter">
+      <label class="facility-sorter__filter-label">
+        <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasSlots" />
+        <span class="facility-sorter__filter-text">Slots Available</span>
+      </label>
+    </div>
+    <div class="facility-sorter__filter">
+      <label class="facility-sorter__filter-label">
+        <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasNoHistory" />
+        <span class="facility-sorter__filter-text">Without History</span>
+      </label>
+    </div>
+    <div class="facility-sorter__filter">
+      <label class="facility-sorter__filter-label">
+        <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasLicense" />
+        <span class="facility-sorter__filter-text">Licensed</span>
+      </label>
+    </div>
   </div>
 </div>

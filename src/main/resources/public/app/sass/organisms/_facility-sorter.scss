@@ -1,8 +1,13 @@
 .facility-sorter{
   @extend .clearfix;
-  padding: 30px;
+  padding: 15px;
   margin-bottom: 5px;
   background: $green-1;
+  position: relative;
+
+  @media screen and (min-width: $screen-md){
+    padding: 15px $grid-gutter-width;
+  }
 }
 
 .facility-sorter__sort{
@@ -12,13 +17,14 @@
     padding: 0 10px;
   }
 
-  @media screen and (min-width: $screen-md ){
+  @media screen and (min-width: $screen-md){
     padding: 0 25px;
   }
 }
 
 .facility-sorter__sort-label{
   color: white;
+  margin: 0;
   line-height: $input-height-base;
 }
 
@@ -26,27 +32,90 @@
   @extend .form-control;
   display: inline-block;
   width: auto;
+  padding: 5px;
+}
+
+.facility-sorter__filter-collapse{
+  color: white;
+  line-height: $input-height-base;
+  padding: 15px $grid-gutter-width / 2;
+  position: absolute;
+  top: 2px;
+  right: 0;
+
+  &:active{
+    color: white;
+  }
+
+  &:hover{
+    color: white;
+  }
+
+  &:focus{
+    color: white;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.facility-sorter__filter-collapse-text{
+  display: none;
+
+  // Bootstrap 3 has no 480px range. Bootstrap 4 does tho.
+  @media screen and (min-width: 480px) {
+    display: inline;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.facility-sorter__filters{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s, padding 0.6s;
+  display: block;
+  clear: both;
+
+  @media screen and (min-width: $screen-md){
+    clear: none;
+    max-height: none;
+    float: left;
+    padding: 0 25px;
+  }
+}
+
+.facility-sorter__filters--open{
+  max-height: 200px;
+  padding-top: 15px;
+
+  @media screen and (min-width: $screen-md){
+    padding-top: 0;
+    max-height: none;
+  }
 }
 
 .facility-sorter__filter{
-  @extend .pull-left;
 
-  @media screen and (min-width: $screen-sm){
-    padding: 0 10px;
-  }
-
-  @media screen and (min-width: $screen-md ){
-    padding: 0 25px;
+  @media screen and (min-width: $screen-md){
+    display: inline-block;
+    padding: 0 $grid-gutter-width / 2;
   }
 }
 
 .facility-sorter__filter-label{
   color: white;
   font-weight: normal;
+  margin: 0;
 }
 
 .facility-sorter__filter-toggle{
-
+  vertical-align: middle;
+  margin: 0 !important;
+  line-height: $input-height-base;
 }
 
 .facility-sorter__filter-text{

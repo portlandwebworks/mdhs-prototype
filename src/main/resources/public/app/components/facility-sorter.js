@@ -11,6 +11,10 @@ angular.module('mdhs').component('facilitySorter', {
 
     controller.sortOrders = FacilitySortService.getSortOrders();
 
+    controller.filterSettings = {
+      isFiltersOpen: false
+    };
+
     // Presentational and component-specific. Stays here.
     controller.sortOrderLabels = {
       LOCATION_NAME_ASCENDING: 'Location Name',
@@ -18,6 +22,10 @@ angular.module('mdhs').component('facilitySorter', {
       SIZE_DESCENDING: 'Size, largest to smallest',
       SIZE_ASCENDING: 'Size, smallest to largest'
     };
+
+    controller.toggleFilters = function(){
+      controller.filterSettings.isFiltersOpen = !controller.filterSettings.isFiltersOpen
+    }
 
   }
 });

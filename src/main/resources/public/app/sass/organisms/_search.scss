@@ -21,6 +21,14 @@
   margin-top: 50px;
 }
 
+.search__map{
+  margin-bottom: $grid-gutter-width / 2;
+
+  @media screen and (min-width: $screen-sm) {
+    margin-bottom: 0;
+  }
+}
+
 // Specific to the search page, and not a behavior of the component itself,
 // stretch the components out to ignore Bootstrap edge gutters.
 
@@ -28,7 +36,7 @@
   margin-left: -($grid-gutter-width / 2);
   margin-right: -($grid-gutter-width / 2);
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-sm) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -38,7 +46,7 @@
   margin-left: -($grid-gutter-width / 2);
   margin-right: -($grid-gutter-width / 2);
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-sm) {
     margin-left: 0;
     margin-right: 0;
   }
