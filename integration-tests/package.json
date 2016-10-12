@@ -1,0 +1,15 @@
+{
+  "name": "integration-test",
+  "version": "0.0.0",
+  "description": "",
+  "dependencies": {
+    "selenium-server": "~2.38.0",
+    "chromedriver": "latest",
+    "jasmine-reporters": "~0.4.1",
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "q": "~1.0"
+  },
+  "devDependencies": {
+  }
+}
