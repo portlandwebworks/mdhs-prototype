@@ -1,0 +1,49 @@
+.about__header {
+  padding: 50px;
+  color: white;
+  margin: 20px 0;
+  background: $blue-1;
+}
+
+.about__header-text {
+  @extend .container;
+  font-size: 3rem;
+}
+
+.about__title {
+  font-size: 3rem;
+  color: $green-1;
+  margin-bottom: 40px;
+  text-align: center;
+
+  @media(min-width: $screen-md) {
+    font-size: 5rem;
+    text-align: left;
+  }
+}
+
+.about__body {
+  @extend .container;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.about__image {
+  display: none;
+  text-align: center;
+
+  @media(min-width: $screen-md) {
+    display: block;
+    margin: 0 0 40px 40px;
+    float: right;
+    width: 400px;
+  }
+}
+
+.about__text {
+  line-height: 3rem;
+}
+
+.about__text-paragraph {
+  margin-bottom: 30px;
+}
