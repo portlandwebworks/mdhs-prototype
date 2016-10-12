@@ -2,7 +2,7 @@
 # Mississippi Vendor Challenge
 
 ## PROTOTYPE URL
-Goes here
+http://mdhs-prototype.portlandwebworks.com/
 
 ## OVERVIEW
 
