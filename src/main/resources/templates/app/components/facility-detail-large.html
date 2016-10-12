@@ -63,7 +63,7 @@
       </div>
 
       <div class="facility-detail-large__action">
-        <button class="facility-detail-large__action-button" type="button" ng-click="$ctrl.contactFacility($ctrl.facility.facility.id)">Call</button>
+        <a href="tel:{{$ctrl.facility.facility.phoneNumber}}" class="facility-detail-large__action-button">Call</a>
       </div>
 
     </div>

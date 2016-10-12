@@ -79,6 +79,21 @@
   display: inline-block;
   vertical-align: middle;
   color: white;
+
+  &:hover {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
+
+  &:active {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
+
+  &:focus {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
 }
 
 

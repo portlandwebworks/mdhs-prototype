@@ -129,4 +129,14 @@
     color: white;
     background: darken($blue-4, 10%);
   }
+
+  &:active {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
+
+  &:focus {
+    color: white;
+    background: darken($blue-4, 10%);
+  }
 }
