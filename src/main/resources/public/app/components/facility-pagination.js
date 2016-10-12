@@ -52,7 +52,19 @@ angular.module('mdhs').component('facilityPagination', {
      * @param {number} page
      */
     controller.goToPage = function(page){
-      FacilityService.getPage(page);
+      FacilityService.getPage(page).then(function(){
+
+        // Look for the sorter's position.
+        var offset = $('.facility-sorter').offset();
+
+        // Also look for the header and find its height.
+        var headerHeight = $('.site-header__navigation').outerHeight();
+
+        // When both are present, slide to that part of the page.
+        if(offset && offset.hasOwnProperty('top') && headerHeight !== null){
+          $("html, body").animate({ scrollTop: offset.top - headerHeight }, "slow");
+        }
+      });
     };
 
   }
