@@ -90,7 +90,7 @@ angular.module('mdhs').component('facilityDetailLarge', {
      * @param {string} licenseType The license type string.
      * @returns {boolean} Returns true if unlicensed
      */
-    controller.isUnlicenced = function(licenseType){
+    controller.isUnlicensed = function(licenseType){
       return licenseType === licenseTypes.UNLICENSED;
     };
 
