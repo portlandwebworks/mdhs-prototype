@@ -12,7 +12,7 @@
         </div>
         <div class="facility-detail-large__history" ng-if="$ctrl.facility.facility.acceptsConvictions">History on Record</div>
       </div>
-      <div class="facility-detail-large__distance">
+      <div class="facility-detail-large__distance" ng-if="$ctrl.facility.distance != null">
         <span class="facility-detail-large__distance-value">{{$ctrl.facility.distance}} mi</span>
         <span class="facility-detail-large__distance-modifier">Away</span>
       </div>

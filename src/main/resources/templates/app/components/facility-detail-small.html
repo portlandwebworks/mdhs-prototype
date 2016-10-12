@@ -3,7 +3,7 @@
   <div class="facility-detail-small__header">
     <div class="facility-detail-small__title">
       <div class="facility-detail-small__name">{{$ctrl.facility.facility.name}}</div>
-      <span class="facility-detail-small__distance">{{$ctrl.facility.distance}} mi</span>
+      <span class="facility-detail-small__distance" ng-if="$ctrl.facility.distance != null">{{$ctrl.facility.distance}} mi Away</span>
       <div class="facility-detail-small__sub-title">
         <div class="facility-detail-small__rating">
           <span class="facility-detail-small__not-rated" ng-if="$ctrl.facility.facility.qualityRating == 0">Not Yet Rated</span>
