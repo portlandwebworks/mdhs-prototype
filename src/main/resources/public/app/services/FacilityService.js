@@ -9,22 +9,22 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
 	if(postedCriteria === undefined){
 		postedCriteria = {};
 	}
-	
+
 	if(filterSettings.hasSlots()){
 		postedCriteria.availableOpenings = true;
 	}
-	
+
 	if(filterSettings.hasNoHistory()){
 		postedCriteria.noConvictions = true;
 	}
-	
+
 	if(filterSettings.hasLicense()) {
 		postedCriteria.licensed = true;
 	}
-	
+
 	postedCriteria.sortBy = FacilitySortService.getSortSettings().sortBy().sortBy;
 	postedCriteria.sortDir = FacilitySortService.getSortSettings().sortBy().sortDir;
-	
+
     return $http.get('/api/facilities', {params: postedCriteria}).then(function (response) {
       // We're binding to the array. Insert data without replacing array.
       currentFacilities.length = 0;
@@ -93,15 +93,9 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
   };
 
   service.getProviderTypes = function(){
-    return {
-      SLOT_CONTRACTOR: 'Slot Contractor',
-      GROUP_HOME: 'Group Home',
-      CENTER: 'Center',
-      NON_RELATIVE_IN_HOME: 'Non-Relative In-Home',
-      RELATIVE_IN_HOME: 'Relative In-Home',
-      NON_RELATIVE_OUT_OF_HOME: 'Non-Relative Out-of-Home',
-      RELATIVE_OUT_OF_HOME: 'Relative Out-of-Home'
-    };
+    return $http.get('/api/facilities/provider-types').then(function (response) {
+      return response.data;
+    });
   };
 
   service.getFacilitySizes = function() {

@@ -7,7 +7,7 @@ angular.module('mdhs').component('facilityFinder', {
 
     FacilityService.getCities().then(function(cities){ controller.cities = cities; });
     FacilityService.getCounties().then(function(counties){ controller.counties = counties; });
-    controller.facilityTypes = FacilityService.getProviderTypes();
+    FacilityService.getProviderTypes().then(function(facilities){ controller.facilityTypes = facilities; });
     controller.genders = FacilityService.getAllowedGenders();
     controller.ages = FacilityService.getAgeRanges();
     controller.facilitySizes = FacilityService.getFacilitySizes();
@@ -22,15 +22,18 @@ angular.module('mdhs').component('facilityFinder', {
       var criteria = angular.copy(controller.facilityFilters);
 	    criteria.genders = [];
 	    criteria.ageRanges = [];
-      criteria.capacityMinimum = controller.facilitySizes[controller.facilityFilters.size].minimumSize;
-      criteria.capacityMaximum = controller.facilitySizes[controller.facilityFilters.size].maximumSize;
+
+      if(controller.facilitySizes.hasOwnProperty(controller.facilityFilters.size)) {
+        criteria.capacityMinimum = controller.facilitySizes[controller.facilityFilters.size].minimumSize;
+        criteria.capacityMaximum = controller.facilitySizes[controller.facilityFilters.size].maximumSize;
+      };
+
       _.forEach(controller.childInfo, function(child){
         if(child.gender !== null){
           criteria.genders.push(child.gender);
         }
         if(child.age !== null){
-          var age = controller.ages[child.age];
-          criteria.ageRanges.push({ minumumAge: age.minumumAge, maximumAge: age.maximumAge });
+          criteria.ageRanges.push(child.age);
         }
       });
 

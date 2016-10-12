@@ -2,12 +2,6 @@
   <div class="facility-finder__filters">
     <form>
       <div class="row facility-finder__row">
-        <!--<div class="col-sm-3">-->
-        <!--<select class="form-control facility-finder__filter" ng-model="facilityFilters.county">-->
-        <!--<option selected="true" value="">County</option>-->
-        <!--<option ng-repeat="county in counties">{{county}}</option>-->
-        <!--</select>-->
-        <!--</div>-->
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.city">
             <option selected="true" value="">City</option>
@@ -23,9 +17,9 @@
           </select>
         </div>
         <div class="col-sm-3">
-          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.facilityType">
+          <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.description">
             <option selected="true" value="">Facility Type</option>
-            <option ng-repeat="(facilityTypeKey, facilityTypeValue) in $ctrl.facilityTypes" value="{{facilityTypeKey}}">{{facilityTypeValue}}</option>
+            <option ng-repeat="facilityType in $ctrl.facilityTypes" value="{{facilityType}}">{{facilityType}}</option>
           </select>
         </div>
         <div class="col-sm-3">
