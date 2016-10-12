@@ -1,8 +1,6 @@
 angular.module('mdhs').service('SearchOptionsService', function searchOptionsFactory($http) {
   var service = this;
 
-  //TODO: switch these out with calls to backend service
-
   service.getCounties = function(){
     return $http.get('/api/facilities/addresses/counties').then(function (response) {
       return response.data;
@@ -16,12 +14,7 @@ angular.module('mdhs').service('SearchOptionsService', function searchOptionsFac
   };
 
   service.getProviderTypes = function(){
-    //return $http.get('/api/provider-types').then(function (response) {
-    //  return response.data;
-    //});
-
     var types = [
-      { value: 1, label: 'Test'},
       { value: 2, label: 'Slot Contractor'},
       { value: 3, label: 'Group Home'},
       { value: 4, label: 'Center'},
