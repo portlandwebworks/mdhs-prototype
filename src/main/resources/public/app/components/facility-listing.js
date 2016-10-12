@@ -27,15 +27,6 @@ angular.module('mdhs').component('facilityListing', {
     }
 
     /**
-     * Handler for the Call button
-     *
-     * @param {number} id The facility ID.
-     */
-    controller.contactFacility = function(id){
-      // TODO
-    };
-
-    /**
      * Returns an array with n length. Helper function for ng-repeat to loop
      * with a number.
      *
