@@ -38,7 +38,7 @@
   display: inline-block;
   width: 14px;
   height: 13px;
-  background-image: url(/app/assets/facility-detail-large/star.png);
+  background-image: url(/app/assets/facility-detail-small/star.png);
   background-repeat: no-repeat;
   background-position: top left;
   background-size: cover;
@@ -116,7 +116,6 @@
 
 .facility-detail-small__license--licensed{
   @extend .label-success;
-  font-size: 0.6667 * $font-size-base;
 }
 
 .facility-detail-small__license--unlicensed{

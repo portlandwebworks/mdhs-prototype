@@ -32,8 +32,15 @@
   }
 }
 
-.facility-detail-large__rating{
+.facility-detail-large__sub-title{
   @extend .col-sm-3;
+}
+
+.facility-detail-large__rating{
+  padding: 5px;
+  display: inline;
+  // prevents stars from wrapping
+  white-space: nowrap;
 }
 
 .facility-detail-large__not-rated{
@@ -64,6 +71,11 @@
   background-size: cover;
 }
 
+.facility-detail-large__history{
+  @extend .label;
+  @extend .label-warning;
+}
+
 .facility-detail-large__distance{
   @extend .col-sm-3;
 }
@@ -85,12 +97,6 @@
   @extend .col-lg-4;
 }
 
-.facility-detail-large__address-line-1{}
-
-.facility-detail-large__address-line-2{}
-
-.facility-detail-large__address-line-3{}
-
 .facility-detail-large__info{
   @extend .col-sm-3;
 }
@@ -103,6 +109,20 @@
   &:after{
     content: ':';
   }
+}
+
+.facility-detail-large__license{
+  @extend .label;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.facility-detail-large__license--licensed{
+  @extend .label-success;
+}
+
+.facility-detail-large__license--unlicensed{
+  @extend .label-warning;
 }
 
 .facility-detail-large__data{}

@@ -26,9 +26,12 @@
         <span class="glyphicon glyphicon-remove"></span> Unlicensed
       </div>
       <div class="facility-detail-small__info-line">
-        <div class="facility-detail-small__address-line facility-detail-small__address-line--1"></div>
-        <div class="facility-detail-small__address-line facility-detail-small__address-line--2">{{$ctrl.facility.facility.city}} MS {{$ctrl.facility.facility.zipCode}}</div>
-        <div class="facility-detail-small__address-line facility-detail-small__address-line--3">{{$ctrl.facility.facility.phoneNumber}}</div>
+        <div class="facility-detail-small__label">County</div>
+        <div class="facility-detail-small__data">{{$ctrl.capitalize($ctrl.facility.facility.county)}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">City</div>
+        <div class="facility-detail-small__data">{{$ctrl.capitalize($ctrl.facility.facility.city)}}, MS {{$ctrl.facility.facility.zipCode}}</div>
       </div>
       <div class="facility-detail-small__info-line">
         <div class="facility-detail-small__label">Type</div>
@@ -51,6 +54,10 @@
       <div class="facility-detail-small__info-line">
         <div class="facility-detail-small__label">Slots Available</div>
         <div class="facility-detail-small__data">{{$ctrl.facility.facility.openings}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Phone</div>
+        <div class="facility-detail-small__data">{{$ctrl.facility.facility.phoneNumber}}</div>
       </div>
     </div>
   </div>

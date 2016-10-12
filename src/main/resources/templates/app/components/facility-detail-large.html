@@ -5,9 +5,12 @@
     <div class="facility-detail-large__row">
 
       <div class="facility-detail-large__name">{{$ctrl.facility.facility.name}}</div>
-      <div class="facility-detail-large__rating">
-        <span ng-if="$ctrl.facility.facility.qualityRating == 0" class="facility-detail-large__not-rated">Not Yet Rated</span>
-        <span ng-if="$ctrl.facility.facility.qualityRating != 0" ng-repeat="i in $ctrl.range($ctrl.facility.facility.qualityRating) track by $index" class="facility-detail-large__star"></span>
+      <div class="facility-detail-large__sub-title">
+        <div class="facility-detail-large__rating">
+          <span ng-if="$ctrl.facility.facility.qualityRating == 0" class="facility-detail-large__not-rated">Not Yet Rated</span>
+          <span ng-if="$ctrl.facility.facility.qualityRating != 0" ng-repeat="i in $ctrl.range($ctrl.facility.facility.qualityRating) track by $index" class="facility-detail-large__star"></span>
+        </div>
+        <div class="facility-detail-large__history" ng-if="$ctrl.facility.facility.acceptsConvictions">History on Record</div>
       </div>
       <div class="facility-detail-large__distance">
         <span class="facility-detail-large__distance-value">{{$ctrl.facility.distance}} mi</span>
@@ -23,9 +26,22 @@
     <div class="facility-detail-large__row">
 
       <div class="facility-detail-large__address">
-        <div class="facility-detail-large__address-line-1"></div>
-        <div class="facility-detail-large__address-line-2">{{$ctrl.facility.facility.city}} MS {{$ctrl.facility.facility.zipCode}}</div>
-        <div class="facility-detail-large__address-line-3">{{$ctrl.facility.facility.phoneNumber}}</div>
+        <div class="facility-detail-large__info-line">
+          <div class="facility-detail-large__license facility-detail-large__license--licensed" ng-if="$ctrl.isLicensed($ctrl.facility.facility.licenseType)">
+            <span class="glyphicon glyphicon-ok"></span> Licensed
+          </div>
+          <div class="facility-detail-large__license facility-detail-large__license--unlicensed" ng-if="$ctrl.isUnlicensed($ctrl.facility.facility.licenseType)">
+            <span class="glyphicon glyphicon-remove"></span> Unlicensed
+          </div>
+        </div>
+        <div class="facility-detail-large__info-line">
+          <label class="facility-detail-large__label">County</label>
+          <span class="facility-detail-large__data">{{$ctrl.capitalize($ctrl.facility.facility.county)}}</span>
+        </div>
+        <div class="facility-detail-large__info-line">
+          <label class="facility-detail-large__label">City</label>
+          <span class="facility-detail-large__data">{{$ctrl.capitalize($ctrl.facility.facility.city)}}, MS {{$ctrl.facility.facility.zipCode}}</span>
+        </div>
       </div>
 
       <div class="facility-detail-large__info">
@@ -53,12 +69,8 @@
           <span class="facility-detail-large__data">{{$ctrl.facility.facility.openings}}</span>
         </div>
         <div class="facility-detail-large__info-line">
-          <label class="facility-detail-large__label">License</label>
-          <span class="facility-detail-large__data">{{$ctrl.getLicenseLabel($ctrl.facility.facility.licenseType)}}</span>
-        </div>
-        <div class="facility-detail-large__info-line">
-          <label class="facility-detail-large__label">Accepts Convictions</label>
-          <span class="facility-detail-large__data">{{$ctrl.facility.facility.acceptsConvictions ? 'Yes' : 'No'}}</span>
+          <label class="facility-detail-large__label">Phone</label>
+          <span class="facility-detail-large__data">{{$ctrl.facility.facility.phoneNumber}}</span>
         </div>
       </div>
 

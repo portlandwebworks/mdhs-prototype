@@ -9,6 +9,7 @@ angular.module('mdhs').component('facilityDetailLarge', {
     var controller = this;
 
     var ageRanges = FacilityService.getAgeRanges();
+    var licenseTypes = FacilityService.getLicenseTypes();
 
     /**
      * Returns an object containing the smallest and largest ages supported by
@@ -74,16 +75,35 @@ angular.module('mdhs').component('facilityDetailLarge', {
     };
 
     /**
-     * Retrieves a human-friendly representation of a license type enum.
+     * Determines if the license type is licensed
      *
-     * @param {String} licenseConstant The enum representation of the license type.
-     * @returns {String} The human-friendly representation of the license type.
+     * @param {string} licenseType The license type string.
+     * @returns {boolean} Returns true if licensed
      */
-    controller.getLicenseLabel = function(licenseConstant){
-      return ({
-        LICENSED: 'Licensed',
-        UNLICENSED: 'Unlicensed'
-      })[licenseConstant];
+    controller.isLicensed = function(licenseType){
+      return licenseType === licenseTypes.LICENSED;
+    };
+
+    /**
+     * Determines if the license type is unlicensed
+     *
+     * @param {string} licenseType The license type string.
+     * @returns {boolean} Returns true if unlicensed
+     */
+    controller.isUnlicenced = function(licenseType){
+      return licenseType === licenseTypes.UNLICENSED;
+    };
+
+    /**
+     * Capitalize a word.
+     *
+     * @param {string} string The string to capitalize.
+     * @returns {string} The capitalized string.
+     */
+    controller.capitalize = function(string){
+      return string.split(' ').map(function(word){
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      }).join(' ');
     };
 
   }

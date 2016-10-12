@@ -93,5 +93,17 @@ angular.module('mdhs').component('facilityDetailSmall', {
     controller.isUnlicenced = function(licenseType){
       return licenseType === licenseTypes.UNLICENSED;
     };
+
+    /**
+     * Capitalize a word.
+     *
+     * @param {string} string The string to capitalize.
+     * @returns {string} The capitalized string.
+     */
+    controller.capitalize = function(string){
+      return string.split(' ').map(function(word){
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      }).join(' ');
+    };
   }
 });
