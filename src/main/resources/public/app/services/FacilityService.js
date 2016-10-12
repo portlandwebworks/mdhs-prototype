@@ -9,7 +9,13 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
     totalResults: 0
   };
 
+  var searchState = {
+    hasSearched: false
+  };
+
   service.find = function (criteria) {
+    searchState.hasSearched = true;
+
 	var filterSettings = FacilitySortService.getFilterSettings();
 	var postedCriteria = angular.copy(criteria);
 	if(postedCriteria === undefined){
@@ -151,6 +157,15 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
    */
   service.getPage = function(pageNumber){
     return service.find({ page: pageNumber });
+  };
+
+  /**
+   * Gets a reference to the searchState object.
+   *
+   * @returns {{hasSearched: boolean}} A reference to the searchState object.
+   */
+  service.getSearchState = function(){
+    return searchState
   };
 
 });

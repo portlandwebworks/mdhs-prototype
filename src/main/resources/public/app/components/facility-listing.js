@@ -7,8 +7,9 @@ angular.module('mdhs').component('facilityListing', {
     var ageRanges = FacilityService.getAgeRanges();
 
     controller.facilities = FacilityService.getCurrentFacilities();
+    controller.searchState = FacilityService.getSearchState();
 
-   /**
+    /**
      * Returns an object containing the smallest and largest ages supported by
      * the provided array of age enums.
      *
@@ -82,6 +83,16 @@ angular.module('mdhs').component('facilityListing', {
         LICENSED: 'Licensed',
         UNLICENSED: 'Unlicensed'
       })[licenseConstant];
+    };
+
+    /**
+     * Check if the user has already done a search and the response was empty.
+     *
+     * @returns {boolean} True if and only if the user has performed a search
+     * that returned empty.
+     */
+    controller.isEmptySearch = function(){
+      return controller.facilities.length === 0 && controller.searchState.hasSearched === true;
     };
   }
 });
