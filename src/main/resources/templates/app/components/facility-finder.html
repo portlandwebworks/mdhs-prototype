@@ -18,13 +18,13 @@
         </div>
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.description">
-            <option selected="true" value="">Facility Type</option>
+            <option selected="true" value="">Provider Type</option>
             <option ng-repeat="facilityType in $ctrl.facilityTypes" value="{{facilityType}}">{{facilityType}}</option>
           </select>
         </div>
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.size">
-            <option selected="true" value="">Facility Size</option>
+            <option selected="true" value="">Provider Size</option>
             <option ng-repeat="(facilitySizeKey, facilitySizeValue) in $ctrl.facilitySizes" value="{{facilitySizeKey}}">{{facilitySizeValue.label}}</option>
           </select>
         </div>
