@@ -1,6 +1,6 @@
 <div class="facility-map">
-  <ui-gmap-google-map center="$ctrl.map.center" zoom="$ctrl.map.zoom" options="$ctrl.map.options">
-    <ui-gmap-marker ng-repeat="facility in $ctrl.facilities" events="$ctrl.map.events" idKey="facility.facility.id"
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+    <ui-gmap-marker ng-repeat="facility in facilities" events="map.events" idKey="facility.facility.id"
                     coords="{ latitude: facility.lat, longitude: facility.lng }">
       <ui-gmap-window options="windowOptions" closeClick="closeClick()">
         <div class="facility-map__window">
