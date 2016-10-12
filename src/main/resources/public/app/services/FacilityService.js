@@ -15,7 +15,7 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
 	}
 	
 	if(filterSettings.hasNoHistory()){
-		postedCriteria.noHistory = true;
+		postedCriteria.noConvictions = true;
 	}
 	
 	if(filterSettings.hasLicense()) {
