@@ -11,7 +11,7 @@
 }
 
 .facility-detail-small__title{
-  @extend .col-xs-6;
+  @extend .col-xs-9;
 }
 
 .facility-detail-small__name{
@@ -51,21 +51,6 @@
 }
 
 .facility-detail-small__distance{
-  @extend .col-xs-3;
-  @extend .text-center;
-  white-space: nowrap;
-
-  &:before, &:after{
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-  }
-}
-
-.facility-detail-small__distance-value{
-  display: inline-block;
-  vertical-align: middle;
   font-weight: bold;
   font-size: 0.7778 * $font-size-base;
 }
@@ -93,7 +78,9 @@
 .facility-detail-small__action-button{
   display: inline-block;
   vertical-align: middle;
+  color: white;
 }
+
 
 .facility-detail-small__detail{
   @extend .clearfix;
