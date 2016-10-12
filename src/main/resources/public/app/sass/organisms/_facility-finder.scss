@@ -6,6 +6,11 @@
   margin-bottom: 20px;
 }
 
+.form__sub-title-text{
+  @extend .col-sm-12;
+  margin-bottom: 15px;
+}
+
 .facility-finder__filter {
   height: 50px;
 }
