@@ -1,21 +1,38 @@
-angular.module('mdhs').service('FacilityService', function ($http, $q) {
+angular.module('mdhs').service('FacilityService', function ($http, $q, FacilitySortService) {
   var service = this;
 
   var currentFacilities = [];
 
   service.find = function (criteria) {
-    return $http.get('/api/facilities', {params: criteria}).then(function (response) {
-
+	var filterSettings = FacilitySortService.getFilterSettings();
+	var postedCriteria = angular.copy(criteria);
+	if(postedCriteria === undefined){
+		postedCriteria = {};
+	}
+	
+	if(filterSettings.hasSlots()){
+		postedCriteria.availableOpenings = true;
+	}
+	
+	if(filterSettings.hasNoHistory()){
+		postedCriteria.noHistory = true;
+	}
+	
+	if(filterSettings.hasLicense()) {
+		postedCriteria.licensed = true;
+	}
+	
+	postedCriteria.sortBy = FacilitySortService.getSortSettings().sortBy().sortBy;
+	postedCriteria.sortDir = FacilitySortService.getSortSettings().sortBy().sortDir;
+	
+    return $http.get('/api/facilities', {params: postedCriteria}).then(function (response) {
       // We're binding to the array. Insert data without replacing array.
       currentFacilities.length = 0;
       Array.prototype.push.apply(currentFacilities, response.data);
-
       return $q.resolve(response.data);
     }, function (response) {
-
       currentFacilities.length = 0;
       return $q.reject(response);
-
     });
   };
 
@@ -103,7 +120,6 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
         label: 'Large (51+ Children)',
         minimumSize: 51
       }
-    }
-  }
-
+    };
+  };
 });

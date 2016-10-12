@@ -50,16 +50,20 @@ public class FacilityResources {
 	@GET
 	@Transactional
 	public Response findFacilities(
+			@QueryParam("availableOpenings") Boolean availableOpenings,
+			@QueryParam("licensed") Boolean licensed,
+			@QueryParam("noConvictions") Boolean noConvictions,
 			@QueryParam("page") Integer page,
 			@QueryParam("sortBy") String sortBy,
 			@QueryParam("sortDir") Sort.Direction sortDirection,
 			@QueryParam("city") String city,
-			@QueryParam("licenseType") Facility.LicenseType licenseType,
 			@QueryParam("genders") List<Facility.AllowedGender> genders,
 			@QueryParam("ageRanges") List<Facility.AgeRange> ageRanges,
-			@QueryParam("capacity") Integer capacity,
+			@QueryParam("description") String description,
+			@QueryParam("capacityMinimum") Integer capacityMin,
+			@QueryParam("capacityMaximum") Integer capacityMax,
 			@QueryParam("withinDistance") Integer withinDistance) throws JsonProcessingException {
-		final FacilityQuery facilityQuery = new FacilityQuery(city, licenseType, genders, ageRanges, withinDistance, capacity);
+		final FacilityQuery facilityQuery = new FacilityQuery(licensed, availableOpenings, noConvictions, description, city, genders, ageRanges, withinDistance, capacityMin, capacityMax);
 
 		if (page == null) {
 			page = 0;
@@ -81,5 +85,11 @@ public class FacilityResources {
 		}
 		Page<FacilityResult> facilities = repo.findFacilities(facilityQuery, pageRequest);
 		return Response.ok(om.writeValueAsString(facilities.getContent())).header("Total-Pages", facilities.getTotalPages()).header("Total-Results", facilities.getTotalElements()).build();
+	}
+	
+	@GET
+	@Path("/provider-types")
+	public List<String> uniuqeProviderTypes(){
+		return repo.findTypes();
 	}
 }

@@ -1,23 +1,61 @@
-angular.module('mdhs').service('FacilitySortService', function ($http, $q) {
+angular.module('mdhs').service('FacilitySortService', function ($rootScope) {
   var service = this;
 
   var sortOrders = {
-    LOCATION_NAME_ASCENDING: 'SORT_LOCATION_NAME_ASCENDING',
-    RATING_DESCENDING: 'SORT_RATING_DESCENDING',
-    SIZE_ASCENDING: 'SORT_SIZE_ASCENDING',
-    SIZE_DESCENDING: 'SORT_SIZE_DESCENDING'
+    DISTNACE: {sortBy: 'withinDistance', sortDir: 'ASC', label: 'Distance'},
+    LOCATION_NAME_ASCENDING: {sortBy: 'name', sortDir: 'ASC', label: 'Location Name'},
+    RATING_DESCENDING: {sortBy: 'qualityRating', sortDir: 'DESC', label: 'Rating'},
+    SIZE_ASCENDING: {sortBy: 'capacity', sortDir: 'DESC', label: 'Size, largest to smallest'},
+    SIZE_DESCENDING: {sortBy: 'capacity', sortDir: 'ASC', label: 'Size, smallest to largest'}
   };
-
+  
+  var _sortBy = sortOrders.LOCATION_NAME_ASCENDING;
+  var _hasSlots = false;
+  var _noHistory = false;
+  var _licensed = false;
+  
+  var updateResults = function(){
+	  $rootScope.$broadcast('event:facilities:find');
+  };
+  
   var sortSettings = {
-    sortBy: sortOrders.LOCATION_NAME_ASCENDING
+    sortBy: function(sort){
+		if(arguments.length > 0){
+			_sortBy = sort;
+			updateResults();
+		}else{
+			return _sortBy;
+		}
+	}
   };
 
   var filterSettings = {
-    hasSlots: false,
-    hasNoHistory: false,
-    hasLicense: false
+    hasSlots: function(hasSlots) {
+		if(arguments.length > 0){
+			_hasSlots = hasSlots;
+			updateResults();
+		}else{
+			return _hasSlots;
+		}
+	},
+    hasNoHistory: function(noHistory){
+		if(arguments.length > 0){
+			_noHistory = noHistory;
+			updateResults();
+		}else{
+			return _noHistory;
+		}
+	},
+    hasLicense: function(licensed){
+		if(arguments.length > 0){
+			 _licensed = licensed;
+			updateResults();
+		}else{
+			return _licensed;
+		}
+	}
   };
-
+  
   service.getSortSettings = function(){
     return sortSettings;
   };

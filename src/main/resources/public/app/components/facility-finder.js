@@ -2,7 +2,7 @@
 
 angular.module('mdhs').component('facilityFinder', {
   templateUrl: '/templates/app/components/facility-finder',
-  controller: function (FacilityService) {
+  controller: function ($scope, FacilityService) {
     var controller = this;
 
     FacilityService.getCities().then(function(cities){ controller.cities = cities; });
@@ -12,7 +12,7 @@ angular.module('mdhs').component('facilityFinder', {
     controller.ages = FacilityService.getAgeRanges();
     controller.facilitySizes = FacilityService.getFacilitySizes();
 
-   initializeFilters();
+    initializeFilters();
 
     controller.childInfo = [
       { gender: null, age: null }
@@ -53,5 +53,9 @@ angular.module('mdhs').component('facilityFinder', {
         withinDistance: '10'
       };
     }
+	
+    $scope.$on('event:facilities:find', function(){
+	  controller.search();
+    });
   }
 });

@@ -1,5 +1,5 @@
 <div class="facility-listing">
-  <div class="facility-listing__item" ng-repeat="facility in $ctrl.facilities | orderBy:$ctrl.facilitySorter:$ctrl.reverseBySortType() | filter:$ctrl.slotsFilter | filter:$ctrl.noHistoryFilter | filter:$ctrl.licenseFilter">
+  <div class="facility-listing__item" ng-repeat="facility in $ctrl.facilities">
     <!--
       There's no sense fighting against what the markup can and can't do. So
       we use different components for small and large screens.
@@ -11,7 +11,7 @@
       <facility-detail-large facility="facility"></facility-detail-large>
     </div>
   </div>
-  <div class="facility-listing__no-results" ng-if="$ctrl.facilities.length == 0">
+  <div class="facility-listing__no-results" ng-if="$ctrl.facilities.length === 0">
     No results
   </div>
 </div>

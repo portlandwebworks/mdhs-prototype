@@ -9,36 +9,63 @@ import java.util.List;
  */
 public class FacilityQuery {
 
+	private final Boolean licensed;
+	private final Boolean availableOpenings;
+	private final Boolean noConvictions;
+	private final String description;
 	private final String city;
-	private final Facility.LicenseType licenseType;
 	private final List<Facility.AllowedGender> genders;
 	private final List<Facility.AgeRange> ageRanges;
 	private final Integer withinDistance;
-	private final Integer capacity;
+	private final Integer capacityMin;
+	private final Integer capacityMax;
 
-	public FacilityQuery(String city, Facility.LicenseType licenseType, List<Facility.AllowedGender> genders, List<Facility.AgeRange> ageRanges, Integer withinDistance, Integer capacity) {
+	public FacilityQuery(Boolean licensed, Boolean availableOpenings, Boolean noConvictions,
+			String description, String city, List<Facility.AllowedGender> genders,
+			List<Facility.AgeRange> ageRanges, Integer withinDistance,
+			Integer capacityMin, Integer capacityMax) {
+		this.noConvictions = noConvictions;
+		this.description = description;
 		this.city = city;
-		this.licenseType = licenseType;
 		this.genders = genders;
 		this.ageRanges = ageRanges;
 		this.withinDistance = withinDistance;
-		this.capacity = capacity;
+		this.capacityMin = capacityMin;
+		this.capacityMax = capacityMax;
+		this.licensed = licensed;
+		this.availableOpenings = availableOpenings;
+	}
+
+	public Boolean getLicensed() {
+		return licensed;
+	}
+
+	public Boolean getAvailableOpenings() {
+		return availableOpenings;
+	}
+
+	public Boolean getNoConvictions() {
+		return noConvictions;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public String getCity() {
 		return city;
 	}
 
-	public Facility.LicenseType getLicenseType() {
-		return licenseType;
-	}
-
 	public Integer getWithinDistance() {
 		return withinDistance;
 	}
 
-	public Integer getCapacity() {
-		return capacity;
+	public Integer getCapacityMin() {
+		return capacityMin;
+	}
+
+	public Integer getCapacityMax() {
+		return capacityMax;
 	}
 
 	public List<Facility.AllowedGender> getGenders() {

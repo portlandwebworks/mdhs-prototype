@@ -17,4 +17,7 @@ public interface FacilityRepository extends JpaRepository<Facility, Integer>, Fa
 
 	@Query("SELECT DISTINCT f.county FROM Facility f ORDER BY f.county")
 	List<String> findUniqueCounties();
+	
+	@Query("SELECT DISTINCT f.description FROM Facility f ORDER BY f.description")
+	List<String> findTypes();
 }

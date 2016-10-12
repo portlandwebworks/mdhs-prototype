@@ -55,6 +55,10 @@ public class FacilityRepositoryImpl implements FacilityRepositoryCustom {
 
 		facilityQuery = facilityQuery.where(preds.toArray(new Predicate[]{}));
 
+		if (!isEmpty(query.getDescription())) {
+			preds.add(cb.equal(facilityRoot.get("description"), query.getDescription()));
+		}
+
 		if (query.getAgeRanges() != null && !query.getAgeRanges().isEmpty()) {
 			query.getAgeRanges().stream().forEach(ar -> {
 				preds.add(cb.isMember(ar, facilityRoot.get("openToAgeRange")));
@@ -63,6 +67,26 @@ public class FacilityRepositoryImpl implements FacilityRepositoryCustom {
 
 		if (query.getGenders() != null && !query.getGenders().isEmpty()) {
 			preds.add(facilityRoot.get("openToGender").in(query.getGenders()));
+		}
+
+		if (query.getCapacityMin() != null) {
+			preds.add(cb.ge(facilityRoot.get("capacity"), query.getCapacityMin()));
+		}
+
+		if (query.getCapacityMax() != null) {
+			preds.add(cb.le(facilityRoot.get("capacity"), query.getCapacityMax()));
+		}
+
+		if (query.getAvailableOpenings() != null) {
+			preds.add(cb.gt(facilityRoot.get("openings"), 0));
+		}
+
+		if (query.getNoConvictions() != null) {
+			preds.add(cb.equal(facilityRoot.get("acceptsConvictions"), !query.getNoConvictions()));
+		}
+
+		if (query.getLicensed() != null && query.getLicensed()) {
+			preds.add(cb.equal(facilityRoot.get("licenseType"), Facility.LicenseType.LICENSED));
 		}
 
 		Sort.Direction distanceDirection = null;
