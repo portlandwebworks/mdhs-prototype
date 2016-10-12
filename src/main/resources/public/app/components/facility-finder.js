@@ -54,6 +54,10 @@ angular.module('mdhs').component('facilityFinder', {
       controller.childInfo.push({ gender: null, age: null });
     };
 
+    controller.removeChild = function(childIndex){
+      controller.childInfo.splice(childIndex,1);
+    };
+
     function initializeFilters(){
       controller.facilityFilters = {
         withinDistance: '10'

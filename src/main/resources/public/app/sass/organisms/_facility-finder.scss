@@ -40,7 +40,8 @@
 }
 
 
-.facility-finder__reset-button {
+.facility-finder__reset-button,
+.facility-finder__remove-child {
   border: none;
   text-decoration: underline;
   color: $blue-2;

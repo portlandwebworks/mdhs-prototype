@@ -46,6 +46,11 @@
               <option ng-repeat="(ageKey, ageValue) in $ctrl.ages" value="{{ageKey}}">{{ageValue.minimumAge}} - {{ageValue.maximumAge}} years</option>
             </select>
           </div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-default facility-finder__remove-child" ng-click="$ctrl.removeChild($index)">
+              Remove
+            </button>
+          </div>
         </div>
         <div class="facility-finder__add-child" ng-click="$ctrl.addChild()">Add a Child</div>
       </div>
