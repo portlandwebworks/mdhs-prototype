@@ -25,9 +25,9 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
 
   service.getAllowedGenders = function(){
     return {
-      MALE: 'MALE',
-      FEMALE: 'FEMALE',
-      BOTH: 'BOTH'
+      MALE: 'Male',
+      FEMALE: 'Female',
+      BOTH: 'Both'
     };
   };
 
@@ -61,6 +61,49 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
       LICENSED: 'LICENSED',
       UNLICENSED: 'UNLICENSED'
     };
+  };
+
+  service.getCounties = function(){
+    return $http.get('/api/facilities/addresses/counties').then(function (response) {
+      return response.data;
+    });
+  };
+
+  service.getCities = function(){
+    return $http.get('/api/facilities/addresses/cities').then(function (response) {
+      return response.data;
+    });
+  };
+
+  service.getProviderTypes = function(){
+    return {
+      SLOT_CONTRACTOR: 'Slot Contractor',
+      GROUP_HOME: 'Group Home',
+      CENTER: 'Center',
+      NON_RELATIVE_IN_HOME: 'Non-Relative In-Home',
+      RELATIVE_IN_HOME: 'Relative In-Home',
+      NON_RELATIVE_OUT_OF_HOME: 'Non-Relative Out-of-Home',
+      RELATIVE_OUT_OF_HOME: 'Relative Out-of-Home'
+    };
+  };
+
+  service.getFacilitySizes = function() {
+    return {
+      SMALL: {
+        label:'Small (0-15 Children)',
+        minimumSize: 0,
+        maximumSize: 15
+      },
+      MEDIUM: {
+        label: 'Medium (16-50 Children)',
+        minimumSize: 16,
+        maximumSize: 50,
+      },
+      LARGE: {
+        label: 'Large (51+ Children)',
+        minimumSize: 51
+      }
+    }
   }
 
 });

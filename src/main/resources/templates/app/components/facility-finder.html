@@ -25,13 +25,13 @@
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.facilityType">
             <option selected="true" value="">Facility Type</option>
-            <option ng-repeat="type in $ctrl.facilityTypes" value="{{type.value}}">{{type.label}}</option>
+            <option ng-repeat="(facilityTypeKey, facilityTypeValue) in $ctrl.facilityTypes" value="{{facilityTypeKey}}">{{facilityTypeValue}}</option>
           </select>
         </div>
         <div class="col-sm-3">
           <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="$ctrl.facilityFilters.size">
             <option selected="true" value="">Facility Size</option>
-            <option ng-repeat="size in $ctrl.facilitySizes" value="{{size.value}}">{{size.label}}</option>
+            <option ng-repeat="(facilitySizeKey, facilitySizeValue) in $ctrl.facilitySizes" value="{{facilitySizeKey}}">{{facilitySizeValue.label}}</option>
           </select>
         </div>
 
@@ -55,12 +55,13 @@
           <div class="col-sm-3">
             <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="child.gender">
               <option selected="true" value="">Gender</option>
-              <option ng-repeat="gender in $ctrl.genders" value="{{gender.value}}">{{gender.label}}</option>
+              <option ng-repeat="(genderKey, genderValue) in $ctrl.genders" value="{{genderKey}}">{{genderValue}}</option>
             </select>
           </div>
           <div class="col-sm-3">
-            <select class="form-control facility-finder__form-control facility-finder__filter" ng-options="age.value as age.label for age in $ctrl.ages" ng-model="child.age">
+            <select class="form-control facility-finder__form-control facility-finder__filter" ng-model="child.age">
               <option selected="true" value="">Age</option>
+              <option ng-repeat="(ageKey, ageValue) in $ctrl.ages" value="{{ageKey}}">{{ageValue.minimumAge}} - {{ageValue.maximumAge}} years</option>
             </select>
           </div>
         </div>
