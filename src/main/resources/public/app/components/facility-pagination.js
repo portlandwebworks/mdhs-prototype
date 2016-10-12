@@ -19,7 +19,7 @@ angular.module('mdhs').component('facilityPagination', {
      */
     controller.generatePageRange = function(){
       // If we have no pages, then no pagination.
-      if(!paginationSettings.totalPages) [];
+      if(!paginationSettings.totalPages) return [];
 
       // Everything is zero-based.
 
