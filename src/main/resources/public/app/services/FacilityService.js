@@ -3,6 +3,12 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
 
   var currentFacilities = [];
 
+  var paginationSettings = {
+    page: 0,
+    totalPages: 0,
+    totalResults: 0
+  };
+
   service.find = function (criteria) {
 	var filterSettings = FacilitySortService.getFilterSettings();
 	var postedCriteria = angular.copy(criteria);
@@ -25,10 +31,20 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
 	postedCriteria.sortBy = FacilitySortService.getSortSettings().sortBy().sortBy;
 	postedCriteria.sortDir = FacilitySortService.getSortSettings().sortBy().sortDir;
 
+    postedCriteria.page = postedCriteria.page || 0;
+
     return $http.get('/api/facilities', {params: postedCriteria}).then(function (response) {
+
+      // Update pagination settings
+      var headers = response.headers();
+      paginationSettings.page = postedCriteria.page;
+      paginationSettings.totalPages = parseInt(headers['total-pages'], 10);
+      paginationSettings.totalResults = parseInt(headers['total-results'], 10);
+
       // We're binding to the array. Insert data without replacing array.
       currentFacilities.length = 0;
       Array.prototype.push.apply(currentFacilities, response.data);
+
       return $q.resolve(response.data);
     }, function (response) {
       currentFacilities.length = 0;
@@ -116,4 +132,25 @@ angular.module('mdhs').service('FacilityService', function ($http, $q, FacilityS
       }
     };
   };
+
+  /**
+   * Gets a reference to the paginationSettings object.
+   *
+   * @return {{page: number, totalPages: number, totalResults: number}} A
+   * reference to the paginationSettings object.
+   */
+  service.getPaginationSettings = function(){
+    return paginationSettings;
+  };
+
+  /**
+   * Loads the given page of results.
+   *
+   * @param {number} pageNumber The zero-indexed page number to load.
+   * @return {Promise} A promise that resolves with the response data.
+   */
+  service.getPage = function(pageNumber){
+    return service.find({ page: pageNumber });
+  };
+
 });

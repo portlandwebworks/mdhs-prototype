@@ -1,0 +1,49 @@
+.facility-pagination{
+  @extend .text-center;
+}
+
+.facility-pagination__pager{
+  @extend .pagination;
+
+  // Bootstrap writes it this way. We override in a similar manner.
+  & > li > a {
+    border: none;
+  }
+
+  & > li:first-child > a {
+    border-radius: 0;
+  }
+
+  & > li:last-child > a {
+    border-radius: 0;
+  }
+}
+
+.facility-pagination__item{
+
+  // Bootstrap writes it this way. We override in a similar manner.
+  &.active > a{
+    border: none;
+    background: $green-1;
+
+    &:hover{
+      background: $green-1;
+    }
+
+    &:focus{
+      background: $green-1;
+    }
+  }
+}
+
+.facility-pagination__link{
+
+}
+
+.facility-pagination__text{
+  display: none;
+
+  @media screen and (min-width: $screen-sm) {
+    display: inline;
+  }
+}
