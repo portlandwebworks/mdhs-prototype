@@ -165,7 +165,7 @@ JUnit and EasyMock were utilized to cover unit testing needs while utilizing Spr
 * WebDriver
 This setup allows easy build out of an automated test suite that would be used as a regression level tests and automated on the integration server.
 
-For integration tests, happy-path testing was conducted on stories CP-21, CP-16, CP-19, and CP-23 using Protractor, Cucumber, and Selenium:
+For integration tests, happy-path testing was conducted on stories xx, xx, xx, xx using Protractor, Cucumber, and Selenium:
 * Protractor is designed to drive AngularJS apps with base steps written in JavaScript
 * Cucumber employs base steps using pseudo-human-readable scripts
 * Selenium drives automation in browsers
