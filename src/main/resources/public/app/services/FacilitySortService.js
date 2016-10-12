@@ -3,7 +3,7 @@ angular.module('mdhs').service('FacilitySortService', function ($rootScope) {
 
   var sortOrders = {
     DISTNACE: {sortBy: 'withinDistance', sortDir: 'ASC', label: 'Distance'},
-    LOCATION_NAME_ASCENDING: {sortBy: 'name', sortDir: 'ASC', label: 'Location Name'},
+    LOCATION_NAME_ASCENDING: {sortBy: 'name', sortDir: 'ASC', label: 'Provider Name'},
     RATING_DESCENDING: {sortBy: 'qualityRating', sortDir: 'DESC', label: 'Rating'},
     SIZE_ASCENDING: {sortBy: 'capacity', sortDir: 'DESC', label: 'Size, largest to smallest'},
     SIZE_DESCENDING: {sortBy: 'capacity', sortDir: 'ASC', label: 'Size, smallest to largest'}
