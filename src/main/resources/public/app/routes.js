@@ -6,6 +6,9 @@ angular.module('mdhs').config(function ($routeProvider) {
     .when('/search', {
       template: '<search></search>'
     })
+    .when('/about', {
+      template: '<about></about>'
+    })
     .otherwise({
       redirectTo: '/'
     });
