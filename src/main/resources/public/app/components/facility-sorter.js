@@ -11,21 +11,21 @@ angular.module('mdhs').component('facilitySorter', {
 
     controller.sortOrders = FacilitySortService.getSortOrders();
 
-    controller.filterSettings = {
-      isFiltersOpen: false
+    controller.filterUiSettings = {
+      isFiltersPanelOpen: false
     };
 
     // Presentational and component-specific. Stays here.
     controller.sortOrderLabels = {
-      LOCATION_NAME_ASCENDING: 'Location Name',
+      LOCATION_NAME_ASCENDING: 'Provider Name',
       RATING_DESCENDING: 'Rating',
-      SIZE_DESCENDING: 'Size, largest to smallest',
-      SIZE_ASCENDING: 'Size, smallest to largest'
+      SIZE_DESCENDING: 'Size (large - small)',
+      SIZE_ASCENDING: 'Size (small - large)'
     };
 
     controller.toggleFilters = function(){
-      controller.filterSettings.isFiltersOpen = !controller.filterSettings.isFiltersOpen
-    }
+      controller.filterUiSettings.isFiltersPanelOpen = !controller.filterUiSettings.isFiltersPanelOpen;
+    };
 
   }
 });

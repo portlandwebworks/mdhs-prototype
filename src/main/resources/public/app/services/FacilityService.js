@@ -59,7 +59,7 @@ angular.module('mdhs').service('FacilityService', function ($http, $q) {
   service.getLicenseTypes = function(){
     return {
       LICENSED: 'LICENSED',
-      UNLICENSED: 'LICENSED'
+      UNLICENSED: 'UNLICENSED'
     };
   }
 

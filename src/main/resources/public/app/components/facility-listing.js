@@ -16,15 +16,6 @@ angular.module('mdhs').component('facilityListing', {
     controller.facilities = FacilityService.getCurrentFacilities();
 
     /**
-     * Handler for the Call button
-     *
-     * @param {number} id The facility ID.
-     */
-    controller.contactFacility = function(id){
-      // TODO
-    };
-
-    /**
      * Returns the property for sorting depending on the sort order chosen.
      *
      * @param {Object} facility A facility result instance.
@@ -99,7 +90,7 @@ angular.module('mdhs').component('facilityListing', {
      */
     controller.licenseFilter = function(facility){
       var licenseFilterOff = !filterSettings.hasLicense;
-      var facilityHasLicense = facility.facility.licenseTypes === licenseTypes.LICENSED;
+      var facilityHasLicense = facility.facility.licenseType === licenseTypes.LICENSED;
       return licenseFilterOff || facilityHasLicense;
     };
 

@@ -9,7 +9,7 @@
     <span class="glyphicon glyphicon-filter"></span>
     <span class="facility-sorter__filter-collapse-text">Search Filters</span>
   </a>
-  <div class="facility-sorter__filters" ng-class="{ 'facility-sorter__filters--open': $ctrl.filterSettings.isFiltersOpen }">
+  <div class="facility-sorter__filters" ng-class="{ 'facility-sorter__filters--open': $ctrl.filterUiSettings.isFiltersPanelOpen }">
     <div class="facility-sorter__filter">
       <label class="facility-sorter__filter-label">
         <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasSlots" />
