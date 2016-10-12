@@ -12,20 +12,21 @@ The application was developed using best practices for user centered design and 
 
 ## INSTALLATION
 
-### mdhs-frontend
-
-Requirements:
+###Requirements:
 
 * Java 8
 * Maven 3.x (must be able to run mvn on the command line)
-* Node + NPM
+* Node + NPM (Using [nvmrc](https://github.com/creationix/nvm) to manage node installations)
 
-**To Run:**
+###To Run:
+
+Run the following in the root directory of the repository.
+
 ```
 npm install
 mvn spring-boot:run
 ```
-Point a browser to http://localhost:8080/index.jsp
+Point a browser to http://localhost:8080/#/
 
 To keep your SASS files compiling and jslint checking run:
 ```
@@ -35,39 +36,43 @@ gulp watch
 ***Current Endpoints:***
 
 * /api/facilities
-  * Supports GET
-  * GET returns sample facilities
+  * GET returns facility information
+  * Query Parameters:
+      * availableOpenings (true|false)
+      * licensed (true|false)
+      * noConvictions (true|false)
+      * city (string)
+      * genders (string: MALE|FEMALE|BOTH)
+      * ageRanges (string: INFANT|TODDLER|CHILD|PRETEEN|TEEN)
+      * capacityMinimum (integer)
+      * capacityMaximum (integer)
+      * withinDistance (integer)
+      * page (integer)
+      * sortBy (string)
+      * sotryDir (string: ASC|DESC) 	  
+* /api/facilities/addresses/cities
+  * GET
+* /api/facilities/addresses/counties
+  * GET
+* /api/facilities/addresses/city-zips
+  * GET
+* /api/facilities/provider-types
+  * GET
 
+  
 Refer to model objects in Java source for available properties. 
 
-### mdhs-backend
-
-**Requirements:**
-
-* Java 8
-* Maven 3.x (must be able to run mvn on the command line)
-* MySQL 5.6.x or 5.7.x
-
-**To Run:**
-Create a new database and user in MySQL for local development. Name does not matter as you will configure that next.
-
-Copy `application.yaml.example` to `application.yaml` and modify database parameters to match your local development setup. Assuming port numbers are the same the only thing you will have to change is the database name on the end of the URL and the username and password values.
-
-Then you can run the application.
-```
-mvn spring-boot:run
-```
-By default the server runs on port 8090, and you can view the documentation for the endpoints [here](http://localhost:8090/api/swagger.json).
-
-**Database:**
+### Database
 The database schema is currently controlled by [Liquibase](http://www.liquibase.org/), and it's integration with Spring Boot. On startup the application will automatically run any outstanding migrations.
+
+For development the app can be run completely standalone using the in-memory database [HSQLDB](http://hsqldb.org/). Production would be deployed using something like PostgreSQL.
 
 
 ## TECHNICAL APPROACH
 
 A more comprehensive description of our Technical Approach can be found on our Confluence wiki - Link
 
-In the event that external artifacts are not considered admissable, we have also provided many of the associated documents and images within this repository - Link
+In the event that external artifacts are not considered admissible, we have also provided many of the associated documents and images within this repository - Link
 
 **A. Assigned a team leader.**
 
@@ -151,7 +156,7 @@ Numerous open-source technologies have been utilized. They include:
 * Spring Boot with Hibernate / JPA and Jersey - server side logic
 * Liquibase - Database schema migration source control
 * TravisCI - continuous integration
-* MySQL - data storage
+* HSQL/PostgreSQL - data storage
 
 **J. Deployed the prototype on PaaS**
 The PoC has been deployed to Google Cloud Container Engine Link. The Container Engine is built on the open source Kubernetes system, providing flexibility to take advantage of on-premises, hybrid, or public cloud infrastructure. Many cloud providers are working to integrate Kubernetes into their platforms such as Red Hat, Microsoft, IBM, OpenStack, and VMware. Kubernetes can also be deployed to Amazon GovCloud. Kubernetes also has a number of other benefits such as the ability to automatically scale based on real-time user demand. Please see the kubernetes (https://github.com/portlandwebworks/mdhs-prototype/tree/develop/kubernetes) folder for a functional demo of the code used to provision the prototype environment.
