@@ -20,14 +20,17 @@ angular.module('mdhs').component('facilityFinder', {
 
     controller.search = function(){
       var criteria = angular.copy(controller.facilityFilters);
-	  criteria.genders = [];
-	  criteria.ageRanges = [];
+	    criteria.genders = [];
+	    criteria.ageRanges = [];
+      criteria.capacityMinimum = controller.facilitySizes[controller.facilityFilters.size].minimumSize;
+      criteria.capacityMaximum = controller.facilitySizes[controller.facilityFilters.size].maximumSize;
       _.forEach(controller.childInfo, function(child){
         if(child.gender !== null){
           criteria.genders.push(child.gender);
         }
         if(child.age !== null){
-          criteria.ageRanges.push(child.age);
+          var age = controller.ages[child.age];
+          criteria.ageRanges.push({ minumumAge: age.minumumAge, maximumAge: age.maximumAge });
         }
       });
 
@@ -53,7 +56,7 @@ angular.module('mdhs').component('facilityFinder', {
         withinDistance: '10'
       };
     }
-	
+
     $scope.$on('event:facilities:find', function(){
 	  controller.search();
     });
