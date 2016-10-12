@@ -7,7 +7,7 @@
 
 .facility-detail-large__header{
   background: $gray-7;
-  padding: 15px 50px 15px 60px;
+  padding: 15px;
 }
 
 .facility-detail-large__name{
@@ -16,20 +16,6 @@
   color: $blue-3;
   font-weight: bold;
   position: relative;
-
-  &:before{
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 8px;
-    background-image: url(/app/assets/facility-detail-large/arrow-down.png);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
-    position: absolute;
-    left: -25px;
-    top: 9px;
-  }
 }
 
 .facility-detail-large__sub-title{
@@ -89,7 +75,7 @@
 }
 
 .facility-detail-large__content{
-  padding: 15px 50px 15px 60px;
+  padding: 15px;
 }
 
 .facility-detail-large__address{
