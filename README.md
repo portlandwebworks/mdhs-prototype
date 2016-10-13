@@ -82,12 +82,12 @@ Multiple human-centered design techniques, were used in the development of the P
 * Creation of "user stories"
 * Creating a Product Backlog - [Link](https://confluence.portlandwebworks.com/display/MSPOC/Agile+Artifacts)
 * Sharing findings with the team and incorporation of feedback
-* Use of a simple and flexible design style guide - Link
+* Use of a simple and flexible design style guide - [Link](https://confluence.portlandwebworks.com/download/attachments/6291861/mdhs-design-doc1.pdf?version=1&modificationDate=1476379120750&api=v2)
 * Usability testing of wireframes
 * Usability testing of prototypes
 
 **E. Created or used a design style guide**
-A visual style guide was created by the designer to define styles, colors, fonts, etc. Link
+A visual style guide was created by the designer to define styles, colors, fonts, etc. [Link](https://confluence.portlandwebworks.com/download/attachments/6291861/mdhs-design-doc1.pdf?version=1&modificationDate=1476379120750&api=v2)
 
 **F. Performed usability tests with people**
 Usability tests were performed at several points in the development process, including:
