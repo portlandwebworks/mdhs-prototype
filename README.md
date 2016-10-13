@@ -130,7 +130,7 @@ Numerous open-source technologies have been utilized. They include:
 * HSQLDB - data storage
 
 **J. Deployed the prototype on PaaS**
-The PoC has been deployed to Google Cloud Container Engine Link. The Container Engine is built on the open source Kubernetes system, providing flexibility to take advantage of on-premises, hybrid, or public cloud infrastructure. Many cloud providers are working to integrate Kubernetes into their platforms such as Red Hat, Microsoft, IBM, OpenStack, and VMware. Kubernetes can also be deployed to Amazon GovCloud. Kubernetes also has a number of other benefits such as the ability to automatically scale based on real-time user demand. Please see the kubernetes folder for a functional demo of the code used to provision the prototype environment.
+The PoC has been deployed to Google Cloud Container Engine Link. The Container Engine is built on the open source Kubernetes system, providing flexibility to take advantage of on-premises, hybrid, or public cloud infrastructure. Many cloud providers are working to integrate Kubernetes into their platforms such as Red Hat, Microsoft, IBM, OpenStack, and VMware. Kubernetes can also be deployed to Amazon GovCloud. Kubernetes also has a number of other benefits such as the ability to automatically scale based on real-time user demand. Please see the kubernetes (https://github.com/portlandwebworks/mdhs-prototype/tree/develop/kubernetes) folder for a functional demo of the code used to provision the prototype environment.
 
 **K. Developed automated unit tests for their code**
 
