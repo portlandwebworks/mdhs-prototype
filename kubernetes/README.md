@@ -8,7 +8,8 @@ Kubernetes is an open-source system for automating deployment, scaling, and mana
 - Docker based containers 
 - Platform Independent 
 - Open Source
-- This example utilizes a high availability Google Cloud SQL Database [https://cloud.google.com/sql/](https://cloud.google.com/sql/)
+- This example utilizes an imbedded H2SQL database
+- Can be easily pointed to a high availability database by leveraging encrypted secrets
 
 ### Setup Google Cloud Cluster
 This step requires a Google Cloud Compute account and the Google Cloud SDK.
@@ -21,7 +22,14 @@ gcloud config set compute/zone us-central1-c
 gcloud container clusters create GCE_PROJECT_ID
 ```
 
-### Kubernetes Secret
+### Provision the Cluster
+Create the cluster
+
+```
+kubectl create -f mdhs-prototype/
+```
+
+### Kubernetes Secret (optional)
 The following is used to configure the kubernetes secret that stores sensitive information. This is encrypted in the Kubernetes platform and made available to containers when they are deployed.
 
 This is an example of how to configure the secret for the database connection.
@@ -30,8 +38,30 @@ This is an example of how to configure the secret for the database connection.
 kubectl create secret generic mdhs \
 --from-literal=spring.datasource.username=USERNAME \
 --from-literal=spring.datasource.password=PASSWORD \
---from-literal=spring.datasource.url=jdbc:mysql://DB_HOSTNAME:3306/DB_NAME
+--from-literal=spring.datasource.url=jdbc:postgresql://DB_HOSTNAME:3306/DB_NAME
 ```
+
+These secrets can be passed to the kubernetes deployment to override the application databse connection.
+
+```
+        env:
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: chhs
+                key: spring.datasource.username
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: chhs
+                key: spring.datasource.password
+          - name: SPRING_DATASOURCE_URL
+            valueFrom:
+              secretKeyRef:
+                name: chhs
+                key: spring.datasource.url
+```
+
 
 ### HTTPS Load Balancer (optional)
 This is an example of how to configure the secret for the HTTPS load balancer. You need need a Certificate and Private Key file as indicated.
@@ -58,19 +88,6 @@ gcloud compute firewall-rules create allow-130-211-0-0-22 \
    --allow tcp:30000-32767
 ```
 
-### Provision the Cluster
-Create the cluster
-
-```
-kubectl create -f mdhs-prototype/
-```
-
-Delete the cluster
-
-```
-kubectl delete -f mdhs-prototype/
-```
-
 ##### Namespaces
 Create a production environment in a different namespace which is completely isolated from other environments.
 
@@ -82,11 +99,10 @@ kubectl create -f mdhs-prototype/ --namespace=prod
 The above command can also be used to provision stage, qa and other environments to meet the project requirements. You will also need to create the secret in the production namespace using `--namespace`.
 
 
-
 ### Docker Compose Demo
-The Kubernetes platform leverages [Docker] (https://www.docker.com/what-docker) containers for all of it's deployments.
+The Kubernetes platform leverages [Docker] (https://www.docker.com/what-docker) containers for all of it's deployments. This is a quick demo of the environment that can be setup locally using Docker Compose. This will launch a local environment using the same publically accessible Docker images used to power the cloud hosted environment. This example also demonstrates externalized configuration by overriding the default H2SQL Database with a PostgreSQL databse. 
 
-To demonstrate the power of Docker, there is a quick demo of the environment that can be setup locally using Docker Compose. If you have Docker installed, you can launch a local environment using the same publically accessible Docker images used to power the cloud hosted environment. From the current directory, just run the following and visit [http://localhost:8080/](http://localhost:8080/).
+From the current directory, run the following and visit [http://localhost:8080/](http://localhost:8080/).
 
 ```
 docker-compose up
