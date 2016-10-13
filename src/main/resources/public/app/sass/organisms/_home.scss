@@ -1,0 +1,73 @@
+.home {
+  width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+}
+
+.home__shade{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(black, 0.5);
+}
+
+.home__container{
+  @extend .container;
+}
+
+.home__row{
+  @extend .row;
+}
+
+.home__text {
+  @extend .col-sm-6;
+  padding-bottom: $grid-gutter-width / 2;
+
+  @media screen and (min-width: $screen-sm) {
+    padding-top: 25%;
+  }
+}
+
+.home__greeting{
+  @extend h1;
+  color: white;
+  text-align: center;
+  margin-bottom: 25vh;
+
+  @media screen and (min-width: $screen-sm) {
+    text-align: left;
+
+    // Restore Bootstrap's calculation of the bottom margin
+    margin-bottom: $line-height-computed / 2
+  }
+}
+
+.home__message{
+  @extend p;
+  color: white;
+}
+
+.home__button{
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+  display: block;
+  border-radius: 30px;
+  border-color: white;
+  background-color: $blue-1;
+
+  &:hover{
+    border-color: white;
+    background-color: darken($blue-1, 20%);
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    display: inline-block;
+    padding: 10px 30px;
+  }
+}

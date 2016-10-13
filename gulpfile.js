@@ -41,3 +41,4 @@ gulp.task('watch', function () {
 
 gulp.task('default', ['scripts', 'formatting', 'convert-sass']);
 
+gulp.task('release', ['scripts', 'convert-sass']);

@@ -1,0 +1,30 @@
+<div class="facility-sorter">
+  <div class="facility-sorter__sort">
+    <label class="facility-sorter__sort-label">Sort</label>
+    <select class="facility-sorter__sort-select" ng-model="$ctrl.sortSettings.sortBy" ng-model-options="{getterSetter: true}" ng-options="order as order.label for order in $ctrl.sortOrders"></select>
+  </div>
+  <a href="#" class="facility-sorter__filter-collapse" ng-click="$ctrl.toggleFilters(); $event.preventDefault()">
+    <span class="glyphicon glyphicon-filter"></span>
+    <span class="facility-sorter__filter-collapse-text">Search Filters</span>
+  </a>
+  <div class="facility-sorter__filters" ng-class="{ 'facility-sorter__filters--open': $ctrl.filterUiSettings.isFiltersPanelOpen }">
+  <div class="facility-sorter__filter">
+    <label class="facility-sorter__filter-label">
+      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasSlots" ng-model-options="{getterSetter: true}" />
+      <span class="facility-sorter__filter-text">Slots Available</span>
+    </label>
+  </div>
+  <div class="facility-sorter__filter">
+    <label class="facility-sorter__filter-label">
+      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasNoHistory" ng-model-options="{getterSetter: true}" />
+      <span class="facility-sorter__filter-text">Without History</span>
+    </label>
+  </div>
+  <div class="facility-sorter__filter">
+    <label class="facility-sorter__filter-label">
+      <input class="facility-sorter__filter-toggle" type="checkbox" ng-model="$ctrl.filterSettings.hasLicense" ng-model-options="{getterSetter: true}" />
+      <span class="facility-sorter__filter-text">Licensed</span>
+    </label>
+  </div>
+  </div>
+</div>

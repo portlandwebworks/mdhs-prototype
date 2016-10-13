@@ -1,0 +1,65 @@
+<div class="facility-detail-small">
+
+  <div class="facility-detail-small__header">
+    <div class="facility-detail-small__title">
+      <div class="facility-detail-small__name">{{$ctrl.facility.facility.name}}</div>
+      <span class="facility-detail-small__distance" ng-if="$ctrl.facility.distance != null">{{$ctrl.facility.distance}} mi Away</span>
+      <div class="facility-detail-small__sub-title">
+        <div class="facility-detail-small__rating">
+          <span class="facility-detail-small__not-rated" ng-if="$ctrl.facility.facility.qualityRating == 0">Not Yet Rated</span>
+          <span class="facility-detail-small__star" ng-if="$ctrl.facility.facility.qualityRating != 0" ng-repeat="i in $ctrl.range($ctrl.facility.facility.qualityRating) track by $index"></span>
+        </div>
+        <div class="facility-detail-small__history" ng-if="$ctrl.facility.facility.acceptsConvictions">History on Record</div>
+      </div>
+    </div>
+    <div class="facility-detail-small__action">
+      <a href="tel:{{$ctrl.facility.facility.phoneNumber}}" class="facility-detail-small__action-button">Call</a>
+    </div>
+  </div>
+
+  <div class="facility-detail-small__detail">
+    <div class="facility-detail-small__info">
+      <div class="facility-detail-small__license facility-detail-small__license--licensed" ng-if="$ctrl.isLicensed($ctrl.facility.facility.licenseType)">
+        <span class="glyphicon glyphicon-ok"></span> Licensed
+      </div>
+      <div class="facility-detail-small__license facility-detail-small__license--unlicensed" ng-if="$ctrl.isUnlicensed($ctrl.facility.facility.licenseType)">
+        <span class="glyphicon glyphicon-remove"></span> Unlicensed
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">County</div>
+        <div class="facility-detail-small__data">{{$ctrl.capitalize($ctrl.facility.facility.county)}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">City</div>
+        <div class="facility-detail-small__data">{{$ctrl.capitalize($ctrl.facility.facility.city)}}, MS {{$ctrl.facility.facility.zipCode}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Type</div>
+        <div class="facility-detail-small__data">{{$ctrl.facility.facility.description}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Size</div>
+        <div class="facility-detail-small__data">{{$ctrl.facility.facility.capacity}} Children</div>
+      </div>
+    </div>
+    <div class="facility-detail-small__info">
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Accepts</div>
+        <div class="facility-detail-small__data">{{$ctrl.getGendersAcceptedLabel($ctrl.facility.facility.openToGender)}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Ages</div>
+        <div class="facility-detail-small__data">{{$ctrl.getMinAgeAccepted($ctrl.facility.facility.openToAgeRange)}} - {{$ctrl.getMaxAgeAccepted($ctrl.facility.facility.openToAgeRange)}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Slots Available</div>
+        <div class="facility-detail-small__data">{{$ctrl.facility.facility.openings}}</div>
+      </div>
+      <div class="facility-detail-small__info-line">
+        <div class="facility-detail-small__label">Phone</div>
+        <div class="facility-detail-small__data">{{$ctrl.facility.facility.phoneNumber}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

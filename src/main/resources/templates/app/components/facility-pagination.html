@@ -1,0 +1,23 @@
+<div class="facility-pagination" ng-if="$ctrl.paginationSettings.totalPages > 0">
+  <ul class="facility-pagination__pager">
+
+    <li class="facility-pagination__item" ng-if="$ctrl.paginationSettings.page != 0">
+      <a class="facility-pagination__link" href="#/" ng-click="$ctrl.goToPage(0); $event.preventDefault();">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="facility-pagination__text">First</span>
+      </a>
+    </li>
+
+    <li class="facility-pagination__item" ng-class="{ 'active': page == $ctrl.paginationSettings.page }" ng-repeat="page in $ctrl.generatePageRange()">
+      <a class="facility-pagination__link" href="#/" ng-click="$ctrl.goToPage(page); $event.preventDefault();">{{page + 1}}</a>
+    </li>
+
+    <li class="facility-pagination__item" ng-if="$ctrl.paginationSettings.page != $ctrl.paginationSettings.totalPages - 1">
+      <a class="facility-pagination__link" href="#/" ng-click="$ctrl.goToPage($ctrl.paginationSettings.totalPages - 1); $event.preventDefault();">
+        <span class="facility-pagination__text">Last</span>
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+
+  </ul>
+</div>

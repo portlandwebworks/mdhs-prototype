@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="Create default sequence" author="Nick Stuart">
+		<createSequence sequenceName="hibernate_sequence"/>
+	</changeSet>
+	
+	<changeSet id="Create Facilities table" author="Nick Stuart">
+		<createTable tableName="facilities">
+			<column name="id" type="bigint">
+				<constraints nullable="false" unique="true"/>
+			</column>
+			<column name="name_" type="varchar(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="city" type="varchar(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="county" type="varchar(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="zip_code" type="varchar(12)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="description" type="varchar(500)">
+			</column>
+			<column name="phone_number" type="varchar(50)">
+			</column>
+			<column name="quality_rating" type="integer">
+			</column>
+			<column name="license_type" type="varchar(20)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="open_to_gender" type="varchar(20)"></column>
+			<column name="openings" type="integer"></column>
+			<column name="capacity" type="integer"></column>
+			<column name="accepts_convictions" type="boolean"></column>
+		</createTable>
+	</changeSet>
+	
+	<changeSet id="Create age range table" author="Nick Stuart">
+		<createTable tableName="facility_age_ranges">
+			<column name="facility_id" type="bigint">
+				<constraints nullable="false" foreignKeyName="age_range_facility_fk" referencedTableName="facilities" referencedColumnNames="id" />
+			</column>
+			<column name="age_range" type="varchar(20)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	
+</databaseChangeLog>

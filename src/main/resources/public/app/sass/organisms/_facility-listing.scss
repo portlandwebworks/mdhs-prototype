@@ -1,0 +1,26 @@
+.facility-listing{}
+
+.facility-listing__item{}
+
+// We want the detail components to be used independently, so we let the listing
+// manage visibility instead of the detail components.
+
+.facility-listing__small{
+  display: block;
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.facility-listing__large{
+  display: none;
+  @media screen and (min-width: $screen-md) {
+    display: block;
+  }
+}
+
+.facility-listing__no-results{
+  @extend .alert;
+  @extend .alert-info;
+  @extend .text-center;
+}

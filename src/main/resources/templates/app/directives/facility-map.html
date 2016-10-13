@@ -1,0 +1,16 @@
+<div class="facility-map">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+    <ui-gmap-marker ng-repeat="facility in facilities" events="map.events" idKey="facility.facility.id"
+                    coords="{ latitude: facility.lat, longitude: facility.lng }">
+      <ui-gmap-window options="windowOptions" closeClick="closeClick()">
+        <div class="facility-map__window">
+          <div class="facility-map__window-title">{{facility.facility.name}}</div>
+          <div class="facility-map__window-data">{{facility.facility.city}}</div>
+          <div class="facility-map__window-data">Phone: {{facility.facility.phoneNumber}}</div>
+          <div class="facility-map__window-data">Type: {{facility.facility.description}}</div>
+          <div class="facility-map__window-data">License: {{facility.facility.licenseType}}</div>
+        </div>
+      </ui-gmap-window>
+    </ui-gmap-marker>
+  </ui-gmap-google-map>
+</div>

@@ -1,0 +1,68 @@
+.facility-finder {
+  margin-bottom: 15px;
+  margin-top: 15px;
+
+  @media(min-width: $screen-sm){
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+}
+
+.facility-finder__row {
+  margin-bottom: 40px;
+}
+
+.form__sub-title-text{
+  @extend .col-sm-12;
+  margin-bottom: 15px;
+}
+
+.facility-finder__filter {
+  height: 50px;
+}
+
+.facility-finder__form-control {
+  margin-bottom: 20px;
+
+  @media(min-width: $screen-md){
+    margin-bottom: 0;
+  }
+}
+
+.facility-finder__search-button {
+  background-color: $blue-1;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  width: 150px;
+  height: 40px;
+  font-weight: bold;
+}
+
+
+.facility-finder__reset-button,
+.facility-finder__remove-child {
+  border: none;
+  text-decoration: underline;
+  color: $blue-2;
+}
+
+.facility-finder__add-child {
+  margin-left: 15px;
+  margin-top: 20px;
+
+  &:hover {
+    cursor: pointer;
+    cursor: hand;
+  }
+  &:before {
+    content: url('/app/assets/search/add-child.png');
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+  }
+}
+
+.facility-finder__child-info {
+  margin: 0 0 20px 0;
+}

@@ -11,13 +11,21 @@
 
 // Molecules (widgets, input groups, etc.)
 
-// Organisms (page sections, etc.)
+// Organisms (page sections, components etc.)
 @import "organisms/site-header";
 @import "organisms/site-footer";
+@import "organisms/facility-finder";
 @import "organisms/angular-google-map";
+@import "organisms/facility-listing";
+@import "organisms/home";
+@import "organisms/search";
+@import "organisms/facility-sorter";
+@import "organisms/facility-map";
+@import "organisms/facility-detail-small";
+@import "organisms/facility-detail-large";
+@import "organisms/about";
+@import "organisms/facility-pagination";
 
 // Templates (layouts, etc.)
-@import "templates/all";
 
 // Pages (page-specific styling, etc.)
-@import "pages/home";
