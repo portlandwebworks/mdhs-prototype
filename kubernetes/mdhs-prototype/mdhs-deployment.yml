@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mdhs-deployment
+  labels:
+    name: mdhs
+    tier: frontend
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: mdhs
+        tier: frontend
+    spec:
+      containers:
+      - image: portlandwebworks/mdhs-poc:latest
+        name: webapp
+        ports:
+        - containerPort: 8080
+        env:
+          - name: SERVER_TOMCAT_REMOTE_IP_HEADER
+            value: x-forwarded-for
+          - name: SERVER_TOMCAT_PROTOCOL_HEADER
+            value: x-forwarded-proto

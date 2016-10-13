@@ -75,6 +75,10 @@
 			<artifactId>hsqldb</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>net.sf.supercsv</groupId>
 			<artifactId>super-csv-java8</artifactId>
 			<version>2.4.0</version>
