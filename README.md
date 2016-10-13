@@ -65,7 +65,7 @@ The database schema is currently controlled by [Liquibase](http://www.liquibase.
 
 ## TECHNICAL APPROACH
 
-A more comprehensive description of our Technical Approach can be found on our Confluence wiki - Link
+A more comprehensive description of our Technical Approach can be found on our Confluence wiki - [Link](https://confluence.portlandwebworks.com/display/MSPOC)
 
 In the event that external artifacts are not considered admissable, we have also provided many of the associated documents and images within this repository - Link
 
@@ -88,26 +88,26 @@ John Gordon, Director of Software Development
 
 **C. User Research**
 
-User research and testing included the following:
+User research and testing included the following (see [Approach](https://confluence.portlandwebworks.com/display/MSPOC/Approach) section of project wiki):
 
 * User
 * Analogous research
 * Team ideation meetings
-* Initial wireframes reviewed with user - Link
-* Updated wireframe reviewed by external testers - Link
-* Prototypes reviewed by external users - Link
+* Initial wireframes reviewed with user
+* Updated wireframe reviewed by external testers
+* Prototypes reviewed by external users
 
 **D. Used at least three “human-centered design” techniques or tools**
 
 Multiple human-centered design techniques, were used in the development of the PoC. These included:
 
-* Creation of wireframes - Link
-* Creation of "user stories" - Link
+* Creation of wireframes - [Link](http://un6mm3.axshare.com/)
+* Creation of "user stories"
 * Creating a Product Backlog - Link
-* Sharing findings with the team and incorporation of feedback - Link
+* Sharing findings with the team and incorporation of feedback
 * Use of a simple and flexible design style guide - Link
-* Usability testing of wireframes - Link
-* Usability testing of prototypes - Link
+* Usability testing of wireframes
+* Usability testing of prototypes
 
 **E. Created or used a design style guide**
 A visual style guide was created by the designer to define styles, colors, fonts, etc. Link
@@ -116,14 +116,14 @@ A visual style guide was created by the designer to define styles, colors, fonts
 Usability tests were performed at several points in the development process, including:
 
 * Internal testing of initial concepts
-* Testing of wireframes - Link
-* Testing of working prototypes - Link
+* Testing of wireframes
+* Testing of working prototypes
 
 **G. Used an iterative approach**
 
 Our iterative approach consisted of the following steps:
 
-* Set up team collaboration site in Confluence – Link
+* Set up team collaboration site in Confluence – [Link]((https://confluence.portlandwebworks.com/display/MSPOC)
 * Feedback on the PoC sought and incorporated throughout
 * Use of Scrum methodology
 * On-going grooming of the product backlog
@@ -133,7 +133,6 @@ Our iterative approach consisted of the following steps:
 **H. Responsive Design**
 The PoC has been developed as mobile-responsive. Quality Assurance testing assured that the PoC matched business requirements:
 
-* Leveraged JIRA plugin test case application called Zephyr - Link
 * Regression testing of desktop, mobile, and tablet
 * One test case for each user story
 * If test case passes the story is closed, if it fails a subtask is created and it is retested
@@ -165,7 +164,7 @@ JUnit and EasyMock were utilized to cover unit testing needs while utilizing Spr
 * WebDriver
 This setup allows easy build out of an automated test suite that would be used as a regression level tests and automated on the integration server.
 
-For integration tests, happy-path testing was conducted on stories xx, xx, xx, xx using Protractor, Cucumber, and Selenium:
+For integration tests, testing was conducted using Protractor, Cucumber, and Selenium:
 * Protractor is designed to drive AngularJS apps with base steps written in JavaScript
 * Cucumber employs base steps using pseudo-human-readable scripts
 * Selenium drives automation in browsers
