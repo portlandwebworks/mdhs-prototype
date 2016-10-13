@@ -40,29 +40,6 @@ gulp watch
 
 Refer to model objects in Java source for available properties. 
 
-### mdhs-backend
-
-**Requirements:**
-
-* Java 8
-* Maven 3.x (must be able to run mvn on the command line)
-* MySQL 5.6.x or 5.7.x
-
-**To Run:**
-Create a new database and user in MySQL for local development. Name does not matter as you will configure that next.
-
-Copy `application.yaml.example` to `application.yaml` and modify database parameters to match your local development setup. Assuming port numbers are the same the only thing you will have to change is the database name on the end of the URL and the username and password values.
-
-Then you can run the application.
-```
-mvn spring-boot:run
-```
-By default the server runs on port 8090, and you can view the documentation for the endpoints [here](http://localhost:8090/api/swagger.json).
-
-**Database:**
-The database schema is currently controlled by [Liquibase](http://www.liquibase.org/), and it's integration with Spring Boot. On startup the application will automatically run any outstanding migrations.
-
-
 ## TECHNICAL APPROACH
 
 A more comprehensive description of our Technical Approach can be found on our Confluence wiki - [Link](https://confluence.portlandwebworks.com/display/MSPOC)
@@ -103,7 +80,7 @@ Multiple human-centered design techniques, were used in the development of the P
 
 * Creation of wireframes - [Link](http://un6mm3.axshare.com/)
 * Creation of "user stories"
-* Creating a Product Backlog - Link
+* Creating a Product Backlog - [Link](https://confluence.portlandwebworks.com/display/MSPOC/Agile+Artifacts)
 * Sharing findings with the team and incorporation of feedback
 * Use of a simple and flexible design style guide - Link
 * Usability testing of wireframes
@@ -123,7 +100,7 @@ Usability tests were performed at several points in the development process, inc
 
 Our iterative approach consisted of the following steps:
 
-* Set up team collaboration site in Confluence – [Link]((https://confluence.portlandwebworks.com/display/MSPOC)
+* Set up team collaboration site in Confluence – [Link](https://confluence.portlandwebworks.com/display/MSPOC)
 * Feedback on the PoC sought and incorporated throughout
 * Use of Scrum methodology
 * On-going grooming of the product backlog
@@ -150,7 +127,7 @@ Numerous open-source technologies have been utilized. They include:
 * Spring Boot with Hibernate / JPA and Jersey - server side logic
 * Liquibase - Database schema migration source control
 * TravisCI - continuous integration
-* MySQL - data storage
+* HSQL - data storage
 
 **J. Deployed the prototype on PaaS**
 The PoC has been deployed to Google Cloud Container Engine Link. The Container Engine is built on the open source Kubernetes system, providing flexibility to take advantage of on-premises, hybrid, or public cloud infrastructure. Many cloud providers are working to integrate Kubernetes into their platforms such as Red Hat, Microsoft, IBM, OpenStack, and VMware. Kubernetes can also be deployed to Amazon GovCloud. Kubernetes also has a number of other benefits such as the ability to automatically scale based on real-time user demand. Please see the kubernetes (xxxxxxxxxxxxxxxxxxx) folder for a functional demo of the code used to provision the prototype environment.
