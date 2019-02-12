@@ -21,7 +21,7 @@ before_script:
 - npm install -g bower
 script: mvn -Ppackage,docker package
 after_success:
-- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
 - export REPO=portlandwebworks/mdhs-poc
@@ -30,6 +30,7 @@ after_success:
 - docker push $REPO
 - curl https://sdk.cloud.google.com | bash
 - source /home/travis/.bashrc
+- source $HOME/google-cloud-sdk/path.bash.inc
 - gcloud components update kubectl
 - kubectl config set-credentials default --username=${GKE_USERNAME} --password=${GKE_PASSWORD}
 - kubectl config set-cluster default --server=${GKE_SERVER} --insecure-skip-tls-verify=true
